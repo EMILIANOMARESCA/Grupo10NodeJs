@@ -12,3 +12,8 @@ Este proyecto es una tienda en línea desarrollada para la venta de figuras Funk
 - Sequelize
 - GIT y GitHub
 - Figma para diseño
+
+## Estructura
+- Images (Aqui iran todas las imagenes a ser utilizadas en la web)
+- Styles (Aqui ira toda la configuracion de estilos generada con CSS)
+- Scripts (Aqui ira toda la logica de JavaScript)
