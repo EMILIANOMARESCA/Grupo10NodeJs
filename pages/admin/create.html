@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Edit | Funkoshop</title>
+<title>Crear Nuevo Item | Funkoshop</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
@@ -28,34 +28,34 @@
         </nav>
     </header><!--Fin del Header-->
     <main>
-        <h2>editar item</h2>
+        <h2>crear nuevo item</h2>
         <section class="producto">
             <article class="categoria">
                 <label for="categorias">Categoría: 
                     <select id="categorias">
-                        <option>Figuras</option>
+                        <option disabled selected>Seleccionar</option>
                     </select>
                 </label>
                 <label for="Naruto">Licencia: 
                     <select id="Naruto">
-                        <option>Naruto Shippuden</option>
+                        <option disabled selected>Seleccionar</option>
                     </select>
                 </label>
             </article>
             <p>Nombre del producto: <span>Kakashi Hatake Shippuden Saga</span></p>
-            <textarea cols="60" rows="6">Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori.</textarea>
+            <textarea placeholder="Descripción del producto" cols="60" rows="6"></textarea>
         </section>
         <section class="precio">
             <article class="precio__row-top">
-                <p>SKU: <span>NAR001012</span></p>
-                <p>Precio: <span>$ 1.799,00</span></p>
-                <p>Stock: <span>10</span></p>
+                <p>SKU: <span>SSK111AB001</span></p>
+                <p>Precio: <span>$ 0.000,00</span></p>
+                <p>Stock: <span>0</span></p>
             </article>
             <article class="precio__row-bt">
-                <p>Descuento: <span>10%</span></p>
+                <p>Descuento: <span>0%</span></p>
                 <label for="Cuotas">Cuotas: 
-                    <select name="" id="Cuotas">
-                        <option>6 Cuotas sin interés</option>
+                    <select id="Cuotas">
+                        <option disable selected>3 Cuotas sin interés</option>
                     </select>
                 </label>
             </article>
@@ -65,14 +65,9 @@
                 <label for="subir-archivos">Imágenes: </label>
                 <input type="file" id="subir-archivos"/>
             </form>
-            <article class="img">
-                <img src="../../img/pokemon/dragonite-1.webp" alt="">
-                <p>Frente</p>
-                <img src="../../img/pokemon/dragonite-box.webp" alt="">
-                <p>Dorso</p>
-            </article>
         </section>
-        <button type="submit">Modificar Producto</button>
+        <button type="submit">Agregar Producto</button>
+        <button type="submit">Limpiar</button>
     </main>
     <footer><!--PIE: Inicio del Footer-->
         <section>
