@@ -1,26 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title> Item | Funkoshop</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <main>
-    <article id="producto-detalles">
-      <header>
-        <!-- Título y detalles básicos del producto -->
-      </header>
-      <section>
-        <!-- Descripción del producto -->
+    <header><!--CABECERA: Inicio del Header-->
+        <nav>
+            <picture>
+                <a href="../../index.html"><img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop"></a>
+            </picture>
+            <ul>
+                <li><a href="../../pages/shop/shop.html">Shop</a></li>
+                <li><a href="../../pages/admin/contact.html">Contacto</a></li>
+                <li><a href="../../pages/admin/login.html">Login</a></li>
+                <li>
+                    <a href="../../pages/shop/cart.html">
+                        <img src="../../img/icons/cart-icon.svg" alt="Icono de carrito">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header><!--Fin del Header-->
+    <main>
+      <section class="producto">
+        <picture><img src="../../img/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Baby yoda"></picture>
+        <article class="producto__detalles">
+          <div class="descripcion">
+            <p>Star wars</p>
+            <h3>Baby Yoda Blueball</h3>
+            <p>Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga, edición limitada.</p>
+            <p>$ 1799,99</p>
+          </div>
+          <div class="agregar-carrito">
+            <input type="number">
+            <button type="submit">Agregar al Carrito</button>
+            <p>Ver métodos de pago</p>
+            <p>- 3 cuotas sin interés</p>
+          </div>
+        </article>
       </section>
+      <!-- Productos relacionados -->
       <section>
-        <!-- Galería de imágenes -->
-      </section>
-      <footer>
-        <!-- Precio y botón de compra -->
-      </footer>
-    </article>
-  </main>
+        <h2>Productos Relacionados</h2>
+        <ul>
+            <li>
+                <article>
+                    <a href="../shop/shop.html">
+                        <picture><img src="../../img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper"></picture>
+                        <div>
+                            <p>STAR WARS</p>
+                            <h4>STORMTROOPER LIGHTSABER</h4>
+                            <p>$ 1799,99.-</p>
+                            <p>3 CUOTAS SIN INTERÉS</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <a href="../shop/shop.html">
+                        <picture><img src="../../img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto"></picture>
+                        <div>
+                            <p>POKEMON</p>
+                            <h4>PIDGEOTTO</h4>
+                            <p>$ 1799,99.-</p>
+                            <p>3 CUOTAS SIN INTERÉS</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <a href="../shop/shop.html">
+                        <picture><img src="../../img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood"></picture>
+                        <div>
+                            <p>HARRY POTTER</p>
+                            <h4>LUNA LOVEGOOD LION MASK</h4>
+                            <p>$ 1799,99.-</p>
+                            <p>3 CUOTAS SIN INTERÉS</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    </main>
+    <footer><!--PIE: Inicio del Footer-->
+        <section>
+            <nav><!--barra de navegacion en el footer-->
+                <ul>
+                    <li>
+                        <a href="../../pages/shop/shop.html">SHOP</a>
+                    </li>
+                    <li>
+                        <a href="../../pages/admin/register.html">REGISTRARSE</a>
+                    </li>
+                    <li>
+                        <a href="../../pages/admin/login.html">LOGIN</a>
+                    </li>
+                    <li>
+                        <a href="../../pages/admin/contact.html">CONTACTO</a>
+                    </li>
+                </ul>
+                <picture>
+                    <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
+                </picture>
+            </nav>
+
+        </section>
+        <p>All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer><!--PIE: Fin del Footer-->
 </body>
+
 </html>
