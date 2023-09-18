@@ -364,4 +364,134 @@ header {
     }
 }
 
+/* SECCION ADMIN */
 
+.admin-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh-144px-343px);
+}
+
+.admin-main h1 {
+    color: #1F1F1F;
+    text-align: center;
+	font-family: var(--alternative-font);
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.68px;
+	margin-top: 36px;
+	margin-bottom: 36px;
+}
+
+.admin-main p {
+    color: #1F1F1F;
+    text-align: center;
+	font-family: var(--alternative-font);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.28px;
+	margin-bottom: 36px;
+}
+
+.admin-main section {
+  text-align: center;
+}
+
+.admin-main form {
+    color: #000;
+    font-family: var(--base-font);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.96px;
+	padding-left: 25%;  /* Espaciado del lado izquierdo */
+    padding-right: 30%; /* Espaciado del lado derecho */
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.admin-main label {
+	white-space: nowrap;
+    width: 40%;
+	text-align: left; /* Alineamos el texto a la izquierda para que todos comiencen a la misma altura lateral */
+	margin-bottom: 36px;
+	display: inline-block; /* Cambia el comportamiento del elemento a inline-block para que acepte ancho */
+    min-width: 125px; /* Asigna un ancho mínimo para todos los labels */
+    margin-right: 10px; /* Un pequeño margen a la derecha para separar del input */
+}
+
+.admin-main input {
+	width: 208.6px;
+    border: none; /* Quitamos el borde por defecto */
+    border-bottom: 2px solid #F33; /* Agregamos la línea inferior */
+    background: transparent; /* Hacemos el fondo transparente */
+    color: #B9B9B9;
+    text-align: left;
+	font-family: var(--base-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.64px;
+    margin-bottom: 36px;
+}
+
+.admin-main input[type="checkbox"] {
+	background-color: #007BFF;
+	color: white;
+	height: 16.275px;
+    width: 16.275px;
+	border: 2px solid #1F1F1F;
+	padding: 10px 20px;
+	cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 3px;
+	margin-right: 10px;
+}
+
+.admin-main input[type="submit"] {
+	width: 102.995px;
+    height: 39.062px;
+    flex-shrink: 0;
+	background: #F33;
+	color: #FFF;
+	font-family: var(--base-font);
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;    /* Centrado horizontal del texto */
+	margin-right: 41px;
+}
+
+.admin-main input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.terms-link {
+    color: #1D84B5;
+    text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+}
+
+.submit-section {
+    display: flex;
+	flex-direction: row; /* Cambiamos de column a row */
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: space-between; /* Separa los elementos entre sí */
+}
+
+.checkbox-section {
+    display: flex;
+    align-items: center;
+	white-space: nowrap;  /* Esto evita que el texto se rompa en nuevas líneas */
+}
