@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Item | Funkoshop</title>
+    <title> Crear Nuevo Item | Funkoshop</title>
     <meta name="description" content="page-mauro">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/index.css">
@@ -49,69 +49,46 @@
         </nav>
     </header><!--Fin del Header-->
     <main>
-      <section class="producto">
-        <picture><img src="../../img/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Baby yoda"></picture>
-        <article class="producto__detalles">
-          <div class="descripcion">
-            <p>Star wars</p>
-            <h3>Baby Yoda Blueball</h3>
-            <p>Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga, edición limitada.</p>
-            <p>$ 1799,99</p>
-          </div>
-          <div class="agregar-carrito">
-            <input type="number">
-            <button type="submit">Agregar al Carrito</button>
-            <p>Ver métodos de pago</p>
-            <p>- 3 cuotas sin interés</p>
-          </div>
-        </article>
-      </section>
-      <!-- Productos relacionados -->
-      <section>
-        <h2>Productos Relacionados</h2>
-        <ul>
-            <li>
-                <article>
-                    <a href="../shop/shop.html">
-                        <picture><img src="../../img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper"></picture>
-                        <div>
-                            <p>STAR WARS</p>
-                            <h4>STORMTROOPER LIGHTSABER</h4>
-                            <p>$ 1799,99.-</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a href="../shop/shop.html">
-                        <picture><img src="../../img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto"></picture>
-                        <div>
-                            <p>POKEMON</p>
-                            <h4>PIDGEOTTO</h4>
-                            <p>$ 1799,99.-</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a href="../shop/shop.html">
-                        <picture><img src="../../img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood"></picture>
-                        <div>
-                            <p>HARRY POTTER</p>
-                            <h4>LUNA LOVEGOOD LION MASK</h4>
-                            <p>$ 1799,99.-</p>
-                            <p>3 CUOTAS SIN INTERÉS</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
-
+        <h2>crear nuevo item</h2>
+        <section class="producto">
+            <article class="categoria">
+                <label for="categorias">Categoría: 
+                    <select id="categorias">
+                        <option disabled selected>Seleccionar</option>
+                    </select>
+                </label>
+                <label for="Naruto">Licencia: 
+                    <select id="Naruto">
+                        <option disabled selected>Seleccionar</option>
+                    </select>
+                </label>
+            </article>
+            <p>Nombre del producto: <span>Kakashi Hatake Shippuden Saga</span></p>
+            <textarea placeholder="Descripción del producto" cols="60" rows="6"></textarea>
+        </section>
+        <section class="precio">
+            <article class="precio__row-top">
+                <p>SKU: <span>SSK111AB001</span></p>
+                <p>Precio: <span>$ 0.000,00</span></p>
+                <p>Stock: <span>0</span></p>
+            </article>
+            <article class="precio__row-bt">
+                <p>Descuento: <span>0%</span></p>
+                <label for="Cuotas">Cuotas: 
+                    <select id="Cuotas">
+                        <option disable selected>3 Cuotas sin interés</option>
+                    </select>
+                </label>
+            </article>
+        </section>
+        <section class="imagenes">
+            <form>
+                <label for="subir-archivos">Imágenes: </label>
+                <input type="file" id="subir-archivos"/>
+            </form>
+        </section>
+        <button type="submit">Agregar Producto</button>
+        <button type="submit">Limpiar</button>
     </main>
     <footer class="footer"><!--PIE: Inicio del Footer-->
         <nav class="navbar container"><!--barra de navegacion en el footer-->
