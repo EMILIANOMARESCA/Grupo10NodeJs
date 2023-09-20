@@ -481,6 +481,7 @@ header {
 .terms-link {
     color: #1D84B5;
     text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+	font-family: var(--base-font);
 }
 
 .submit-section {
@@ -494,4 +495,20 @@ header {
     display: flex;
     align-items: center;
 	white-space: nowrap;  /* Esto evita que el texto se rompa en nuevas líneas */
+}
+
+.pass-section {
+    display: flex;
+	flex-direction: column; 
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: space-between; /* Separa los elementos entre sí */
+}
+
+.pass-link {
+    color: #1D84B5;
+    text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+	font-size: 14px;
+	font-family: var(--base-font);
+    padding: var(--spacing-8);
+	
 }
