@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Paleta de colores */
+    --primary-solid: #FF3333;
+    --primary-900: rgba(255, 51, 51, 0.9);
+    --primary-500: rgba(255, 51, 51, 0.5);
+    --primary-300: rgba(255, 51, 51, 0.3);
+
+    --secondary-solid: #1d84b5;
+    --secondary-900: rgb(29, 132, 181, 0.9);
+    --secondary-500: rgb(29, 132, 181, 0.5);
+    --secondary-300: rgb(29, 132, 181, 0.3);
+
+    --dark-solid: #1f1f1f;
+    --dark-900: rgb(31, 31, 31, 0.9);
+    --dark-500: rgb(31, 31, 31, 0.5);
+    --dark-300: rgb(31, 31, 31, 0.3);
+
+    --dark-bg-solid: #30343f;
+    --light-bg-solid: #fafaff;
+    --light-font-solid: #ffffff;
+
+    /* Tipografias */
+    --base-font: "Inter", sans-serif;
+    --alternative-font: "Raleway", sans-serif;
+    
+    /* Tamaños de fuente */
+    --font-display: 4.6em;
+    --font-jumbo: 3.8em;
+    --font-xlarge: 3em;
+    --font-large: 2.4em;
+    --font-medium: 1.8em;
+    --font-small: 1.6em;
+    --font-xsmall: 1.4em;
+
+    /* Espaciados */
+    --spacing-128: 12.8rem;
+    --spacing-68: 6.8rem;
+    --spacing-48: 4.8rem;
+    --spacing-36: 3.6rem;
+    --spacing-28: 2.8rem;
+    --spacing-24: 2.4rem;
+    --spacing-20: 2rem;
+    --spacing-16: 1.6rem;
+    --spacing-12: 1.2rem;
+    --spacing-8: 0.8rem;
+}
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* el espacio que se usa con margin o padding no modifica el tamaño del elemento */
+}
+
+/* etiqueta padre del sitio */
+html {
+    font-family: var(--base-font);
+    font-size: 62.5%;  /* se normaliza y equivale a 10 px es decir 1em */
+    color: var(--dark-solid);
+}
+
+a {
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;  /* para que herede el color del elemento padre */
+}
+
+header, 
+footer {
+    font-family: var(--alternative-font);
+    color: var(--light-font-solid);
+}
+
+ul, ol {
+list-style-type: none;
+}
+
+p {
+    font-size: 1.8em;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* HEADER */
+header {
+    background-color: var(--dark-bg-solid);
+    padding: var(--spacing-36);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__logo {
+    max-width: 300px;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;  
+    gap: var(--spacing-20);
+}
+
+.navbar__link {
+    font-size: var(--font-medium);
+    padding: var(--spacing-8) var(--spacing-16);
+    display: inline-block;
+    transition: background .3s ease-in-out;
+    position: relative;
+}
+
+.navbar__link:hover {
+    background-color: var(--primary-solid);
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-8);
+}
+
+.with-submenu:hover .submenu {
+    display: block;
+}
+
+.submenu {
+    display: none;
+    width: 300px;
+    position: absolute;
+    background-color: var(--dark-bg-solid);
+    z-index: 3;
+}
+
+.submenu__link {
+    display: block;
+    padding: var(--spacing-8) var(--spacing-16);
+    font-size: var(--font-medium);
+    transition: background .3s ease-in-out;
+}
+
+.submenu__link:hover {
+    background-color: var(--primary-900);
+}
+
+/* HERO BANNER */
+.hero {
+    background-image: url(../img/funkos-banner.webp);
+    padding: var(--spacing-128);
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px) brightness(.9); /* Efectos de la imagen */
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-20);
+    align-items: start;
+    z-index: 2;
+    position: relative;
+}
+
+.hero__tittle {
+    font-family: var(--alternative-font);
+    font-size: var(--font-jumbo);
+    color: var(--light-font-solid);
+}
+
+.hero__text {
+    font-family: var(--alternative-font);
+    color: var(--light-font-solid);
+    font-size: var(--font-medium);
+}
+
+.hero__link {
+    display: inline-block;
+    font-size: var(--font-medium);
+    background-color: var(--light-bg-solid);
+    padding: var(--spacing-12) var(--spacing-68);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all .3s ease-in-out;
+}
+
+.hero__link:hover {
+    background-color: var(--primary-900);
+    color: var(--light-font-solid);
+}
+
+
+/* SECCION COLLECTIONS */
+.collection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: var(--spacing-16) 0;
+}
+
+.collection:nth-child(2) .collection__cover {
+    order: -1;
+}
+
+.collection__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+    align-items: start;
+}
+
+.collection__tittle {
+    font-family: var(--alternative-font);
+    font-size: var(--font-display);
+    font-weight: 500;
+}
+
+.collection__text {
+    font-family: var(--alternative-font);
+    font-size: var(--font-large);
+    font-weight: 300;
+    border-bottom: 2px solid var(--primary-solid);
+    padding-bottom: var(--spacing-20);
+}
+
+.collection__link {
+    display: inline-block;
+    font-size: var(--font-medium);
+    background-color: var(--dark-bg-solid);
+    color: var(--light-font-solid);
+    padding: var(--spacing-16) var(--spacing-36);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background .3s ease-in-out;
+}
+
+.collection__link:hover {
+    background-color: var(--primary-900);
+}
+
+
+/* SECCION slider últimos lanzamientos */
+.slider { 
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-36);
+    margin: var(--spacing-68) auto;
+}
+
+.slider__tittle {
+    font-family: var(--alternative-font);
+    font-size: var(--font-display);
+    text-transform: uppercase;
+}
+
+.slider__items {
+    display: flex;
+    gap: var(--spacing-24);
+}
+
+.card-item__cover {
+    display: flex;
+    position: relative;
+}
+
+.card-item__tag {
+    font-size: var(--font-xsmall);
+    text-transform: uppercase;
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    padding: var(--spacing-8) var(--spacing-12);
+    position: absolute;
+    right: 0;
+}
+
+.card-item__cover img {
+    animation: fade .7s;
+}
+
+.card-item__img--back {
+    display: none;
+}
+
+.card-item__cover:hover .card-item__img--back {
+    display: block;
+}
+
+.card-item__cover:hover .card-item__img--front {
+    display: none;
+}
+
+.card-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-12);
+    padding: var(--spacing-16);
+}
+
+.card-item__licence {
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+}
+
+.card-item__name {
+    font-size: var(--font-medium);
+    font-weight: 700;
+}
+
+.card-item__price {
+    font-size: var(--font-small);
+}
+
+.card-item__promo {
+    font-size: var(--font-xsmall);
+    color: var(--secondary-solid);
+    font-weight: 700;
+}
+
+
+/* Seccion FOOTER */
+.footer {
+    background-color: var(--dark-bg-solid);
+    padding: var(--spacing-68);
+}
+
+.footer__copy {
+    margin-top: var(--spacing-36);
+    text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* SECCION ADMIN */
+
+.admin-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh-144px-343px);
+}
+
+.admin-main h1 {
+    color: #1F1F1F;
+    text-align: center;
+	font-family: var(--alternative-font);
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.68px;
+	margin-top: 36px;
+	margin-bottom: 36px;
+}
+
+.admin-main p {
+    color: #1F1F1F;
+    text-align: center;
+	font-family: var(--alternative-font);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.28px;
+	margin-bottom: 36px;
+}
+
+.admin-main section {
+  text-align: center;
+}
+
+.admin-main form {
+    color: #000;
+    font-family: var(--base-font);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.96px;
+	padding-left: 25%;  /* Espaciado del lado izquierdo */
+    padding-right: 30%; /* Espaciado del lado derecho */
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.admin-main label {
+	white-space: nowrap;
+    width: 40%;
+	text-align: left; /* Alineamos el texto a la izquierda para que todos comiencen a la misma altura lateral */
+	margin-bottom: 36px;
+	display: inline-block; /* Cambia el comportamiento del elemento a inline-block para que acepte ancho */
+    min-width: 125px; /* Asigna un ancho mínimo para todos los labels */
+    margin-right: 10px; /* Un pequeño margen a la derecha para separar del input */
+}
+
+.admin-main input {
+	width: 208.6px;
+    border: none; /* Quitamos el borde por defecto */
+    border-bottom: 2px solid #F33; /* Agregamos la línea inferior */
+    background: transparent; /* Hacemos el fondo transparente */
+    color: #B9B9B9;
+    text-align: left;
+	font-family: var(--base-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.64px;
+    margin-bottom: 36px;
+}
+
+.admin-main input[type="checkbox"] {
+	background-color: #007BFF;
+	color: white;
+	height: 16.275px;
+    width: 16.275px;
+	border: 2px solid #1F1F1F;
+	padding: 10px 20px;
+	cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 3px;
+	margin-right: 10px;
+}
+
+.admin-main input[type="submit"] {
+	width: 102.995px;
+    height: 39.062px;
+    flex-shrink: 0;
+	background: #F33;
+	color: #FFF;
+	font-family: var(--base-font);
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;    /* Centrado horizontal del texto */
+	margin-right: 41px;
+}
+
+.admin-main input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.terms-link {
+    color: #1D84B5;
+    text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+}
+
+.submit-section {
+    display: flex;
+	flex-direction: row; /* Cambiamos de column a row */
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: space-between; /* Separa los elementos entre sí */
+}
+
+.checkbox-section {
+    display: flex;
+    align-items: center;
+	white-space: nowrap;  /* Esto evita que el texto se rompa en nuevas líneas */
+}
