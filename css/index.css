@@ -18,8 +18,10 @@
     --dark-300: rgb(31, 31, 31, 0.3);
 
     --dark-bg-solid: #30343f;
+    --dark-font-solid: #000000;
     --light-bg-solid: #fafaff;
     --light-font-solid: #ffffff;
+    --placeholder-font-dark: #111111;
 
     /* Tipografias */
     --base-font: "Inter", sans-serif;
@@ -27,6 +29,7 @@
     
     /* Tamaños de fuente */
     --font-display: 4.6em;
+    --font-title: 4.2em;
     --font-jumbo: 3.8em;
     --font-xlarge: 3em;
     --font-large: 2.4em;
@@ -364,6 +367,80 @@ header {
     }
 }
 
+/* - - - - PAGE ITEM  - - - - - */
+
+.item--licence{
+    font-size: var(--font-small);
+    text-transform: uppercase;
+} 
+
+.collection-item__name{
+    font-size: var(--font-jumbo);
+    font-family: var(--base-font);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.item--text{
+    font-weight: 400;
+    border-bottom: unset;
+    padding-bottom: unset;
+}
+
+.collection-item__price{
+    font-size: var(--font-jumbo);
+    font-family: var(--alternative-font);
+    font-weight: 400;
+}
+
+.collection-item__quantity{
+    display: flex;
+    gap: var(--spacing-8);
+}
+
+.collection-item__quantity--fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.collection-item__quantity--fields > svg {
+    background-color: var(--dark-bg-solid);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 18px;
+    height: 16px;
+} 
+
+.collection-item__link{
+    color: var(--light-font-solid);
+    font-size: var(--font-medium);
+    font-weight: 400;
+    background-color: var(--primary-solid);
+    display: inline-block;
+    margin: 0 var(--spacing-20);
+    padding: var(--spacing-8) var(--spacing-16);
+    transition: background .3s ease-in-out;
+}
+
+.collection-item__link:hover {
+    background-color: var(--dark-bg-solid);
+}
+
+.item-promo{
+    font-size: var(--font-small);
+}
+
+.item-promo > span{
+    text-decoration: underline;
+}
+
+.item-promo > span:hover{
+    cursor: pointer;
+}
+
 /* SECCION ADMIN */
 
 .admin-main {
@@ -481,7 +558,6 @@ header {
 .terms-link {
     color: #1D84B5;
     text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
-	font-family: var(--base-font);
 }
 
 .submit-section {
@@ -495,20 +571,4 @@ header {
     display: flex;
     align-items: center;
 	white-space: nowrap;  /* Esto evita que el texto se rompa en nuevas líneas */
-}
-
-.pass-section {
-    display: flex;
-	flex-direction: column; 
-    align-items: center; /* Alinea verticalmente los elementos */
-    justify-content: space-between; /* Separa los elementos entre sí */
-}
-
-.pass-link {
-    color: #1D84B5;
-    text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
-	font-size: 14px;
-	font-family: var(--base-font);
-    padding: var(--spacing-8);
-	
 }
