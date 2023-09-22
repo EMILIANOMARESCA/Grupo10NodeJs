@@ -512,3 +512,20 @@ header {
     padding: var(--spacing-8);
 	
 }
+
+.admin-main textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border: 2px solid #F33; /* Borde similar a tus inputs */
+    background: transparent; /* Fondo transparente */
+    color: #B9B9B9;
+    text-align: left;
+    font-family: var(--base-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.64px;
+    margin-bottom: 36px;
+    padding: 10px; /* Agregamos algo de padding para que el texto no esté demasiado pegado al borde */
+    resize: vertical; /* Permite al usuario redimensionar solo verticalmente */
+}
