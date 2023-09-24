@@ -558,6 +558,7 @@ header {
 .terms-link {
     color: #1D84B5;
     text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+    font-family: var(--base-font);
 }
 
 .submit-section {
@@ -573,6 +574,21 @@ header {
 	white-space: nowrap;  /* Esto evita que el texto se rompa en nuevas líneas */
 }
 
+.pass-section {
+    display: flex;
+	flex-direction: column; 
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: space-between; /* Separa los elementos entre sí */
+}
+
+.pass-link {
+    color: #1D84B5;
+    text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
+	font-size: 14px;
+	font-family: var(--base-font);
+    padding: var(--spacing-8);
+
+}
 
 .admin-main textarea {
     width: 100%; /* Ocupa todo el ancho disponible */
@@ -591,10 +607,9 @@ header {
     resize: vertical; /* Permite al usuario redimensionar solo verticalmente */
 }
 
-    /* FORMULARIOS ADMIN */
+        /* -----  FORMULARIOS ADMIN --------  */
     .admin-form{
         display: flex;
-        /* justify-content: space-between; */
         flex-wrap: nowrap;
     
         color: #000;
@@ -602,25 +617,17 @@ header {
         font-size: var(--font-large);
         font-weight: 400;
         letter-spacing: 0.96px;
-        /* padding-left: 25%;  /* Espaciado del lado izquierdo */
-        /* padding-right: 30%; /* Espaciado del lado derecho */
         margin: var(--spacing-20) 0;
         align-items: center;
     }
     
     .admin-label{
         /* white-space: nowrap; */
-        /* width: 40%; */
-        text-align: left; /* Alineamos el texto a la izquierda para que todos comiencen a la misma altura lateral */
-        margin-right: var(--spacing-8);/* margin-bottom: 36px; */
-        /* display: inline-block; /* Cambia el comportamiento del elemento a inline-block para que acepte ancho */
-        /* min-width: 125px;  /*Asigna un ancho mínimo para todos los labels */
-        /* margin-right: 10px; /* Un pequeño margen a la derecha para separar del input */
+        text-align: left;
+        margin-right: var(--spacing-8);
     }
     
     .admin-input{
-        /* width: 208.6px;
-        height: 100%;*/
         border: none; /* Quitamos el borde por defecto */
         border-bottom: 2px solid var(--primary-solid); /* Agregamos la línea inferior */
         background: transparent; /* Hacemos el fondo transparente */;
@@ -629,20 +636,13 @@ header {
         font-family: var(--base-font);
         font-weight: 400;
         outline: none;
-        /* padding-top: 1rem; */
-        /*letter-spacing: 0.64px;
-        margin-bottom: 36px; */
     }
     
     .admin-input::placeholder{
         color: var(--placeholder-font-dark);
         font-size: 18px;
-        /*height: 200px; */
-        /* text-transform: uppercase; */
-        /* padding-top: 1rem; */
         padding: 1rem 1rem 0 0;
         width: max-content;
-        /* border-bottom: 2px solid var(--primary-solid); */
     } 
     .admin-select{
         color: var(--dark-font-solid);
@@ -764,3 +764,4 @@ header {
 .create-input::placeholder{
     color: var(--dark-300);
 }
+
