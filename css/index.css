@@ -765,3 +765,60 @@ header {
     color: var(--dark-300);
 }
 
+.terms-condition {
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 80%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.terms-condition h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.terms-condition h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.terms-condition p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.forgetpass-section {
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 50%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.forgetpass-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.forgetpass-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.forgetpass-section label,
+.forgetpass-section input,
+.forgetpass-section button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
