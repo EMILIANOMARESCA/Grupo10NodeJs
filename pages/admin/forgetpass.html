@@ -4,11 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Carrito | Funkoshop</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <title>Olvidé mi contraseña | Funkoshop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/index.css">
 </head>
 
@@ -17,9 +14,7 @@
     <header><!--CABECERA: Inicio del Header-->
         <nav class="navbar container">
             <picture class="navbar__logo">
-                <a href="../../index.html">
-                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
-                </a>
+              <a href="../../index.html"><img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop"></a>
             </picture>
 
             <ul class="navbar__menu">
@@ -45,55 +40,26 @@
                     <a class="navbar__link" href="../../pages/admin/login.html">LOGIN</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__cart" href="../../pages/shop/cart.html">
+                    <a class="navbar__cart" href="../../pages/shop/cart.htm">
                         <img src="../../img/icons/cart-icon.svg" alt="Icono de carrito">
                     </a>
                 </li>
             </ul>
         </nav>
     </header><!--Fin del Header-->
+	
+    <main class="admin-main">
+        <section class="forgetpass-section">
+            <h1>Olvidé mi contraseña</h1>
+            <p>Introduce tu dirección de correo electrónico para recibir instrucciones de restablecimiento de contraseña.</p>
+            <form action="/reset-password" method="post">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
 
-    <main class="main-container"><!--CUERPO: Inicio del Main-->
-		<h1>CARRITO DE COMPRAS</h1>
-			<div class="cart-columns">
-				<span>Detalle de Producto</span>
-				<span>Cantidad</span>
-				<span>Total</span>
-				<span></span>
-			</div>	
-
-		  <!-- Esto se repetiría por cada producto en el carrito -->
-			<div class="cart-item">
-				<div class="product-details">
-					<img src="url_de_la_foto" alt="producto">
-					<div>
-						<p>Nombre del producto</p>
-						<p>Nombre de la colección</p>
-						<p>Precio unitario</p>
-					</div>
-				</div>
-					<div class="quantity">
-						<button>-</button>
-						<span>1</span>
-						<button>+</button>
-					</div>
-					<div class="total-price">
-						Total
-					</div>
-					<div>
-						<button class="remove-item">X</button>
-					</div>
-
-				<div class="cart-summary">
-					<h2>Resumen</h2>
-					<p>Cantidad de Elementos: X</p>
-					<p>Subtotal: X</p>
-					<p>Envío: X</p>
-					<p>Total: X</p>
-				</div>
-
-				<button class="checkout">Ir a Pagar</button>
-	</main><!--CUERPO: Fin del Main-->
 
     <footer class="footer"><!--PIE: Inicio del Footer-->
         <nav class="navbar container"><!--barra de navegacion en el footer-->
@@ -109,16 +75,12 @@
                 </li>
             </ul>
             <picture>
-                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
+                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" >
+              </picture>
         </nav>
-
+       
         <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
     </footer><!--PIE: Fin del Footer-->
 
-
-    <!--Scripts-->
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 </body>
-
 </html>

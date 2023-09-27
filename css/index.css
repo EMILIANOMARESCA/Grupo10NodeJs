@@ -18,8 +18,10 @@
     --dark-300: rgb(31, 31, 31, 0.3);
 
     --dark-bg-solid: #30343f;
+    --dark-font-solid: #000000;
     --light-bg-solid: #fafaff;
     --light-font-solid: #ffffff;
+    --placeholder-font-dark: #111111;
 
     /* Tipografias */
     --base-font: "Inter", sans-serif;
@@ -27,6 +29,7 @@
     
     /* Tamaños de fuente */
     --font-display: 4.6em;
+    --font-title: 4.2em;
     --font-jumbo: 3.8em;
     --font-xlarge: 3em;
     --font-large: 2.4em;
@@ -364,6 +367,80 @@ header {
     }
 }
 
+/* - - - - PAGE ITEM  - - - - - */
+
+.item--licence{
+    font-size: var(--font-small);
+    text-transform: uppercase;
+} 
+
+.collection-item__name{
+    font-size: var(--font-jumbo);
+    font-family: var(--base-font);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.item--text{
+    font-weight: 400;
+    border-bottom: unset;
+    padding-bottom: unset;
+}
+
+.collection-item__price{
+    font-size: var(--font-jumbo);
+    font-family: var(--alternative-font);
+    font-weight: 400;
+}
+
+.collection-item__quantity{
+    display: flex;
+    gap: var(--spacing-8);
+}
+
+.collection-item__quantity--fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.collection-item__quantity--fields > svg {
+    background-color: var(--dark-bg-solid);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 18px;
+    height: 16px;
+} 
+
+.collection-item__link{
+    color: var(--light-font-solid);
+    font-size: var(--font-medium);
+    font-weight: 400;
+    background-color: var(--primary-solid);
+    display: inline-block;
+    margin: 0 var(--spacing-20);
+    padding: var(--spacing-8) var(--spacing-16);
+    transition: background .3s ease-in-out;
+}
+
+.collection-item__link:hover {
+    background-color: var(--dark-bg-solid);
+}
+
+.item-promo{
+    font-size: var(--font-small);
+}
+
+.item-promo > span{
+    text-decoration: underline;
+}
+
+.item-promo > span:hover{
+    cursor: pointer;
+}
+
 /* SECCION ADMIN */
 
 .admin-main {
@@ -481,7 +558,7 @@ header {
 .terms-link {
     color: #1D84B5;
     text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
-	font-family: var(--base-font);
+    font-family: var(--base-font);
 }
 
 .submit-section {
@@ -510,5 +587,238 @@ header {
 	font-size: 14px;
 	font-family: var(--base-font);
     padding: var(--spacing-8);
-	
+
 }
+
+.admin-main textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border: 2px solid #F33; /* Borde similar a tus inputs */
+    background: transparent; /* Fondo transparente */
+    color: #B9B9B9;
+    text-align: left;
+    font-family: var(--base-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.64px;
+    margin-bottom: 36px;
+    padding: 10px; /* Agregamos algo de padding para que el texto no esté demasiado pegado al borde */
+    resize: vertical; /* Permite al usuario redimensionar solo verticalmente */
+}
+
+        /* -----  FORMULARIOS ADMIN --------  */
+    .admin-form{
+        display: flex;
+        flex-wrap: nowrap;
+    
+        color: #000;
+        font-family: var(--base-font);
+        font-size: var(--font-large);
+        font-weight: 400;
+        letter-spacing: 0.96px;
+        margin: var(--spacing-20) 0;
+        align-items: center;
+    }
+    
+    .admin-label{
+        /* white-space: nowrap; */
+        text-align: left;
+        margin-right: var(--spacing-8);
+    }
+    
+    .admin-input{
+        border: none; /* Quitamos el borde por defecto */
+        border-bottom: 2px solid var(--primary-solid); /* Agregamos la línea inferior */
+        background: transparent; /* Hacemos el fondo transparente */;
+        text-align: left;
+        font-size: 18px;
+        font-family: var(--base-font);
+        font-weight: 400;
+        outline: none;
+    }
+    
+    .admin-input::placeholder{
+        color: var(--placeholder-font-dark);
+        font-size: 18px;
+        padding: 1rem 1rem 0 0;
+        width: max-content;
+    } 
+    .admin-select{
+        color: var(--dark-font-solid);
+        font-size: var(--font-large);
+        font-weight: 300;
+        font-family: var(--base-font);        
+        margin: var(--spacing-28) 0;
+    }                
+    .admin-select-option{
+        font-weight: 400;
+    }                               
+    .admin-select__option{
+        position: relative;
+        color: var(--dark-solid);
+        font-size: 20px;
+        font-weight: 500;
+        font-family: var(--base-font);    
+        border: var(--dark-bg-solid) solid 2px;
+        border-radius: 6px;
+        display: inline-block;
+        width: 243px;
+        padding: var(--spacing-12);
+        margin-left: var(--spacing-28);
+    }
+    
+    .admin-select__option > svg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: var(--spacing-12);
+    }
+    .admin-area{
+        max-width: 1000px;
+    }                
+    .admin-textarea{
+        border: #1f1f1f solid 1px;
+        font-family: var(--base-font);
+        font-size: var(--font-medium);
+        border-radius: 4px;
+        width: 100%;
+        height: 194px;
+        padding: var(--spacing-12);
+    }
+    .admin-select__box{
+        color: #000;
+        font-size: 20px;
+        font-family: var(--base-font);
+        font-weight: 500;
+        width: 346px;
+        border-radius: 6px;
+        border: #000 solid 2px;
+        padding: 10px;
+        margin-left: var(--spacing-28);
+    }  
+    .upload-files{
+        color: var(--dark-solid);
+        font-size: 14px;
+        letter-spacing: 0.56px;
+    }
+    .admin-submit{
+        color: var(--light-font-solid);
+        background-color: var(--primary-solid);
+        font-size: var(--font-xsmall);
+        font-family: var(--base-font);
+        font-weight: 600;
+        display: inline-block;
+        margin: var(--spacing-36) var(--spacing-36) var(--spacing-36) 0;
+        padding: var(--spacing-12) var(--spacing-20);
+        transition: background .3s ease-in-out;
+    }
+    .admin-submit:hover{
+        cursor: pointer;
+        background-color: var(--dark-bg-solid);    
+    }
+    
+/*  -------  PAGE EDIT ------- */
+
+.edit{
+    padding: 0 var(--spacing-36);    
+}
+
+.edit-item__text{
+    color: var(--dark-solid);
+    font-size: var(--font-title);
+    font-family: var(--alternative-font);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: var(--spacing-36) 0 var(--spacing-8);
+}
+.edit-contenedor{
+    display: flex;
+    gap: 30px;
+}
+.precio__row{
+    display: flex;
+    gap: var(--spacing-36);
+}
+.upload-images{
+    display: flex;
+    gap: var(--spacing-24);
+}
+.upload-images__img{
+    width: 150px;
+    border-bottom: 2px solid var(--primary-solid);
+}
+.upload-images__text{
+    font-size: var(--font-medium);
+    font-family: var(--alternative-font);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ------ PAGE CREATE ---------*/
+
+.create-select{
+    color: var(--dark-300);
+}
+
+.create-input::placeholder{
+    color: var(--dark-300);
+}
+
+.terms-condition {
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 80%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.terms-condition h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.terms-condition h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.terms-condition p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.forgetpass-section {
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 50%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.forgetpass-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.forgetpass-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.forgetpass-section label,
+.forgetpass-section input,
+.forgetpass-section button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
