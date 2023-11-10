@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Crear Nuevo Item | Funkoshop</title>
+    <meta name="description" content="page-mauro">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/index.css">
+</head>
+
+<body>
+	<header><!--CABECERA: Inicio del Header-->
+		<nav class="navbar container">
+			<picture class="navbar__logo">
+				<a href="./index.html">
+					<img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+				</a>
+			</picture>
+
+			<ul class="navbar__menu">
+				<li class="navbar__item">
+					<a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
+				</li>
+				<li class="navbar__item">
+					<a class="navbar__link" href="./admin.html">ADMIN</a>
+				</li>
+				<li class="navbar__item">
+					<a class="navbar__link" href="../../index.html">SALIR</a>
+				</li>
+			</ul>
+		</nav>
+	</header><!--Fin del Header-->
+    <main class="edit">
+        <section class="producto container">
+            <article class="edit-item">
+              <h3 class="edit-item__text">Editar item</h3>
+                <div class="edit-contenedor">
+                    <div class="edit-categoria">
+                        <p class="admin-select">
+                          Categoría: 
+                            <span class="admin-select__option create-select">
+                              Seleccionar 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                <path d="M11.0066 17.2602L5.69293 11.9466C5.04575 11.2994 4.90133 10.5589 5.25966 9.72503C5.618 8.89119 6.25632 8.47359 7.17463 8.47223H17.6998C18.6195 8.47223 19.2585 8.88983 19.6168 9.72503C19.9751 10.5602 19.83 11.3007 19.1815 11.9466L13.8678 17.2602C13.6634 17.4646 13.442 17.6179 13.2036 17.7201C12.9652 17.8222 12.7097 17.8733 12.4372 17.8733C12.1647 17.8733 11.9092 17.8222 11.6708 17.7201C11.4324 17.6179 11.211 17.4646 11.0066 17.2602Z" fill="#2B2B2B"/>
+                              </svg>
+                            </span>
+                        </p>
+                     </div>
+                    <div class="edit-categoria">
+                        <p class="admin-select">
+                          Licencia: 
+                         <span class="admin-select__option create-select"> 
+                            Seleccionar 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                <path d="M11.0066 17.2602L5.69293 11.9466C5.04575 11.2994 4.90133 10.5589 5.25966 9.72503C5.618 8.89119 6.25632 8.47359 7.17463 8.47223H17.6998C18.6195 8.47223 19.2585 8.88983 19.6168 9.72503C19.9751 10.5602 19.83 11.3007 19.1815 11.9466L13.8678 17.2602C13.6634 17.4646 13.442 17.6179 13.2036 17.7201C12.9652 17.8222 12.7097 17.8733 12.4372 17.8733C12.1647 17.8733 11.9092 17.8222 11.6708 17.7201C11.4324 17.6179 11.211 17.4646 11.0066 17.2602Z" fill="#2B2B2B"/>
+                            </svg>
+                         </span>
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="description">
+                <div class="admin-form">
+                    <label class="admin-label" for="Nombre">
+                        Nombre del producto:
+                    </label>
+                    <input class="admin-input create-input" type="text" id="Nombre" placeholder="Kakashi Hatake Shippuden Saga" size="40">
+                </div>
+                <div class="admin-area">
+                    <textarea class="admin-textarea create-select" cols="60" rows="6">Descripción del producto</textarea>
+                </div>
+            </article>
+      </section>
+      <section class="precio container">
+          <article class="precio__row">
+            <div class="admin-form">
+                <label class="admin-label" for="SKU">
+                    SKU:
+                </label>
+                <input class="admin-input create-input" type="text" id="SKU" placeholder="SSK111AB001" size="10">
+            </div>
+            <div class="admin-form">
+                <label class="admin-label" for="Precio">
+                    Precio:
+                </label>
+                <input class="admin-input create-input" type="text" id="Precio" placeholder="$ 0.000,00" size="10">
+            </div>
+            <div class="admin-form">
+                <label class="admin-label" for="Stock">
+                    Stock:
+                </label>
+                <input class="admin-input create-input" type="text" id="Stock" placeholder="0" size="2">
+            </div>
+          </article>
+          <article class="precio__row">
+                <div class="admin-form">
+                    <label class="admin-label" for="Descuento">
+                        Descuento:
+                    </label>
+                    <input class="admin-input create-input" type="text" id="Descuento" placeholder="0%" size="3">
+                </div>
+                <label class="admin-select" for="Cuotas">
+                    Cuotas: 
+                  <select class="admin-select__box create-select" name="" id="Cuotas">
+                      <option>3 Cuotas sin interés</option>
+                      <option>6 Cuotas sin interés</option>
+                      <option>9 Cuotas con interés</option>
+                      <option>12 Cuotas sin interés</option>
+                      <option>Ahora 12 con interés</option>
+                      <option>Ahora 36 con interés</option>
+                  </select>
+                </label>
+          </article>
+      </section>
+      <section class="edit-images container">
+            <form class="admin-form">
+              <label class="admin-label" for="subir-archivos">Imágenes: </label>
+              <input class="upload-files" type="file" id="subir-archivos"/>
+            </form>
+            <p class="admin-submit">Modificar Producto</p>
+            <p class="admin-submit">Limpiar</p>
+      </section>
+    </main>
+	<footer class="footer"><!--PIE: Inicio del Footer-->
+		<nav class="navbar container"><!--barra de navegacion en el footer-->
+			<ul class="navbar__item">
+				<li class="navbar__item">
+					<a class="navbar__link" href="../shop/shop.html">SHOP</a>
+				</li>
+				<li class="navbar__item">
+					<a class="navbar__link" href="./register.html">REGISTRARSE</a>
+				</li>
+				<li class="navbar__item">
+					<a class="navbar__link" href="./login.html">INGRESAR</a>
+				</li>
+				<li class="navbar__item">
+					<a class="navbar__link" href="./contact.html">CONTACTO</a>
+				</li>
+			</ul>
+			<picture>
+				<img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop"> 
+            </picture>
+		</nav>
+	   
+		<p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+	</footer><!--PIE: Fin del Footer-->
+
+	<!--Scripts-->
+	<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+</body>
+</html>
