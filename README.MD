@@ -14,6 +14,11 @@ Este proyecto es una tienda en línea desarrollada para la venta de figuras Funk
 - Figma para diseño
 
 ## Estructura
-- Img (Aqui iran todas las imagenes a ser utilizadas en la web)
-- Styles (Aqui ira toda la configuracion de estilos generada con CSS)
-- Scripts (Aqui ira toda la logica de JavaScript)
+- Public (Aqui ira toda la configuracion del FrontEnd)
+  + Img (Aqui iran todas las imagenes a ser utilizadas en la web)
+  + Css (Aqui ira toda la configuracion de estilos generada con CSS)
+  + Js (Aqui ira toda la logica de JavaScript)
+  + Pages (Aqui iran las diferentes paginas del proyecto en HTML)
+  + Index (Pagina principal del proyecto)
+ 
+- Src (Aqui ira toda la configuracion del BackEnd en Node)

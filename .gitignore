@@ -21,3 +21,5 @@ Thumbs.db
 
 # Build directory
 /dist
+
+node_modules
