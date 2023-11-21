@@ -455,6 +455,101 @@ iconify-icon {
 
 /* SECCION ADMIN */
 
+#search-buttom{
+    display: flex;
+    margin-top:  40px;
+    padding-left: 130px;
+}
+
+#search-buttom img{
+    width: 45px;
+    margin-right: 15px;  
+}
+
+#search-buttom img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#search-buttom input{
+    width: 510px;
+    height: 47px;
+    border: 2px #30343F solid;
+    border-radius: 6px;
+    padding-left: 10px;
+}
+
+#search-buttom input::placeholder{
+    font-family: var(--base-font);
+    font-weight: 450;
+    font-size: 19px;
+    padding-left: 10px;
+    color: #B9B9B9;
+}
+
+#agregar-producto{
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 130px;
+}
+
+#agregar-producto h1{
+    font-size: 40px;
+    font-family: var(--base-font);
+}
+
+#agregar-producto h3{
+    font-size: 25px;
+    font-family: var(--base-font);
+    margin-top: 10px;
+    margin-left: 435px;
+}
+
+#agregar-producto a img{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+#agregar-producto a img:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+#lista-productos{
+    font-family: var(--base-font);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+#table {
+    width: 80%;
+    border-collapse: separate;
+    border-spacing: var(--spacing-12);
+}
+
+#table-head tr th{
+    text-align: start;
+    padding-bottom: 20px;
+
+}
+
+#table-body tr td{
+    font-family: var(--base-font);
+    font-weight: 505;
+    padding-bottom: 10px;
+
+}
+
+#table-body tr td img{
+    width: 32px;
+}
+
 .admin-main {
   display: flex;
   justify-content: center;
