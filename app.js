@@ -18,11 +18,9 @@ const PORT = process.env.PORT;
 //Creo la carpeta public
 app.use(express.static('public'));
 
-
 //Motor de plantillas EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './src/views'));
-
 
 //Multer, implementacion
 const storage = multer.diskStorage({
@@ -49,14 +47,23 @@ app.use(methodOverride('_method'));
 app.use('/', mainRoutes);
 app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);
-app.use('/admin', authRoutes);
-
+app.use('/auth', authRoutes);
 
 //Middleware para manejar el error 404
+
+app.use((req, res, next) => {
+    console.log(`Ruta solicitada: ${req.url}`);
+    next();
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('¡Algo salió mal en el servidor!');
+});
+
 app.use((req, res, next) => {
     res.status(404).send('Recurso no encontrado');
 });
-
 
 //definimos puerto para el servidor
 app.listen(4000, () => console.log("Servidor corriendo en http://localhost:4000")); 

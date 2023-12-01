@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Administracion | Funkoshop</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+
+	<body>
+
+		<header><!--CABECERA: Inicio del Header-->
+			<nav class="navbar container">
+				<picture class="navbar__logo">
+					<a href="index.html">
+						<img src="img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+					</a>
+				</picture>
+
+				<ul class="navbar__menu">
+					<li class="navbar__item">
+						<a class="navbar__link" href="shop/shop.html">VER TIENDA</a>
+					</li>
+					<li class="navbar__item">
+						<a class="navbar__link" href="./admin.html">ADMIN</a>
+					</li>
+					<li class="navbar__item">
+						<a class="navbar__link" href="index.html">SALIR</a>
+					</li>
+				</ul>
+			</nav>
+		</header><!--Fin del Header-->
+
+		<main>
+			<div id="search-buttom">
+				<img src="img/icons/search_icon.svg" alt="">
+				<input type="search" placeholder="código, nombre o categoría">
+			</div>
+
+
+			<section id="agregar-producto">
+				<h1>
+					LISTADO DE PRODUCTOS
+				</h1>
+				<h3>AGREGAR</h3>
+				<!-- Formulario para agregar productos -->
+				<a href="admin/create.html">
+					<img src="img/icons/plus-square-fill.svg" alt="Agregar un producto">
+				</a>				
+			</section>
+
+			<section id="lista-productos">
+				<table id="table">
+					<thead id="table-head">
+						<tr>
+							<th>ID</th> <!-- product.product_id -->
+							<th>Código</th>  <!-- product.sku -->
+							<th>Nombre del Producto</th>  <!-- product.product_name -->
+							<th>Categoria</th>  <!-- product.licence_name -->
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="table-body">
+						<% products.forEach(product => { %>
+							<tr>
+								<td><%= product.id %></td>
+								<td><%= product.sku %></td>
+								<td><%= product.product_name %></td>
+								<td><%= product.licence_name %></td>
+							</tr>
+						<% }); %>
+						<td>
+							<a href="../admin/edit.html">
+								<img src="../../img/icons/edit_pencil.svg" alt="Editar ítem">
+							</a>
+						</td>
+						<td>
+							<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
+						</td>
+					</tbody>
+				</table>
+			</section>
+		</main>
+	
+		<footer class="footer"><!--PIE: Inicio del Footer-->
+			<nav class="navbar container"><!--barra de navegacion en el footer-->
+				<ul class="navbar__item">
+					<li class="navbar__item">
+						<a class="navbar__link" href="shop/shop.html">SHOP</a>
+					</li>
+					<li class="navbar__item">
+						<a class="navbar__link" href="./register.html">REGISTRARSE</a>
+					</li>
+					<li class="navbar__item">
+						<a class="navbar__link" href="./login.html">INGRESAR</a>
+					</li>
+					<li class="navbar__item">
+						<a class="navbar__link" href="./contact.html">CONTACTO</a>
+					</li>
+				</ul>
+				<picture>
+					<img src="img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
+			</nav>
+		   
+			<p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+		</footer><!--PIE: Fin del Footer-->
+
+		<!--Scripts-->
+		<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+    </body>
+</html>

@@ -1,24 +1,32 @@
 const mysql = require('mysql2');
 require('dotenv').config(); //Requerimos la dependencia .env
+console.log(process.env.HOST, process.env.USER, process.env.DBPASS, process.env.DB);
 
 //Creamos la conexion simple a BBDD, inicia una instancia de una conexion individual, abre y cierra las conexiones de a una a la vez
-const connection = mysql.createConnection({
-    host: process.env.HOST, //USAMOS LAS VARIABLES DE ENTORNO
-    user: process.env.USER,
-    password: process.env.DBPASS,
-    database: process.env.DB
+const db = mysql.createConnection({
+    host: 'localhost', //process.env.HOST, 
+    user: 'admin', //process.env.USER,
+    password: 'admin', //process.env.DBPASS,
+    database: 'funko_test', //process.env.DB,
+	//port: process.env.DBPORT
 });
 
-connection.connect();
-module.exports = connection;
+db.connect(error => {
+    if (error) {
+        console.error('Error al conectar: ' + error.stack);
+        return;
+    }
+    console.log('Conectado a la base de datos con el ID ' + db.threadId);
+});
+module.exports = db;
 
 //Pool de conexiones a la BBDD, hasta 10 conexiones simultaneas
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'useradmin',
-    password: 'useradmin',
-    database: 'funkoshop',
-    port: 3306,
+    host: 'localhost', //process.env.HOST, 
+    user: 'admin', //process.env.USER,
+    password: 'admin', //process.env.DBPASS,
+    database: 'funko_test', //process.env.DB,
+	//port: process.env.DBPORT
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,

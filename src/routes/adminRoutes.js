@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router(); //preparo el modulo de rutas de express para crear rutas
 const adminControllers = require('../controllers/adminController');
-
+const path = require('path');
 
 //Creo las rutas que necesito para el admin
+// Ruta dinámica para servir páginas HTML
+router.get('/:page', adminControllers.servePage);
+
+// Ejemplo en adminRoutes
 router.get('/', adminControllers.admin);
 router.get('/create', adminControllers.getCreate);
 router.post('/create', adminControllers.postCreate);
