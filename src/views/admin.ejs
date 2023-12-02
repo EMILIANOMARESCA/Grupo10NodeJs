@@ -6,7 +6,7 @@
 		<title>Administracion | Funkoshop</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="../css/index.css">
 	</head>
 
 	<body>
@@ -14,20 +14,20 @@
 		<header><!--CABECERA: Inicio del Header-->
 			<nav class="navbar container">
 				<picture class="navbar__logo">
-					<a href="index.html">
-						<img src="img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+					<a href="../index.html">
+						<img src="../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
 					</a>
 				</picture>
 
 				<ul class="navbar__menu">
 					<li class="navbar__item">
-						<a class="navbar__link" href="shop/shop.html">VER TIENDA</a>
+						<a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
 					</li>
 					<li class="navbar__item">
 						<a class="navbar__link" href="./admin.html">ADMIN</a>
 					</li>
 					<li class="navbar__item">
-						<a class="navbar__link" href="index.html">SALIR</a>
+						<a class="navbar__link" href="../index.html">SALIR</a>
 					</li>
 				</ul>
 			</nav>
@@ -35,7 +35,7 @@
 
 		<main>
 			<div id="search-buttom">
-				<img src="img/icons/search_icon.svg" alt="">
+				<img src="../img/icons/search_icon.svg" alt="">
 				<input type="search" placeholder="código, nombre o categoría">
 			</div>
 
@@ -46,8 +46,8 @@
 				</h1>
 				<h3>AGREGAR</h3>
 				<!-- Formulario para agregar productos -->
-				<a href="admin/create.html">
-					<img src="img/icons/plus-square-fill.svg" alt="Agregar un producto">
+				<a href="/admin/create">
+					<img src="../img/icons/plus-square-fill.svg" alt="Agregar un producto">
 				</a>				
 			</section>
 
@@ -66,20 +66,20 @@
 					<tbody id="table-body">
 						<% products.forEach(product => { %>
 							<tr>
-								<td><%= product.id %></td>
+								<td><%= product.product_id %></td>
 								<td><%= product.sku %></td>
 								<td><%= product.product_name %></td>
 								<td><%= product.licence_name %></td>
+								<td>
+									<a href="../admin/edit.html">
+										<img src="../../img/icons/edit_pencil.svg" alt="Editar ítem">
+									</a>
+								</td>
+								<td>
+									<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
+								</td>
 							</tr>
 						<% }); %>
-						<td>
-							<a href="../admin/edit.html">
-								<img src="../../img/icons/edit_pencil.svg" alt="Editar ítem">
-							</a>
-						</td>
-						<td>
-							<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
-						</td>
 					</tbody>
 				</table>
 			</section>
@@ -102,7 +102,7 @@
 					</li>
 				</ul>
 				<picture>
-					<img src="img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
+					<img src="../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
 			</nav>
 		   
 			<p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>

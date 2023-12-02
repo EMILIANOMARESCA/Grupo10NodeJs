@@ -21,7 +21,8 @@ db.connect(error => {
 module.exports = db;
 
 //Pool de conexiones a la BBDD, hasta 10 conexiones simultaneas
-const pool = mysql.createPool({
+/*
+    const pool = mysql.createPool({
     host: 'localhost', //process.env.HOST, 
     user: 'admin', //process.env.USER,
     password: 'admin', //process.env.DBPASS,
@@ -36,4 +37,4 @@ const pool = mysql.createPool({
 module.exports = {
     conn: pool.promise()
 };
-
+*/
