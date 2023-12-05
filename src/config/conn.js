@@ -6,7 +6,7 @@ console.log(process.env.HOST, process.env.USER, process.env.DBPASS, process.env.
 const db = mysql.createConnection({
     host: process.env.HOST, 
     user: process.env.USER,
-    password: process.env.DBPASS,
+    password: process.env.PASS,
     database: process.env.DB,
 });
 
