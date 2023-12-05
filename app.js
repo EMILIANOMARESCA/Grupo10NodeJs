@@ -9,11 +9,8 @@ const methodOverride = require('method-override');
 require('dotenv').config(); //Requerimos la dependencia .env
 const multer = require('multer');
 
-
-
 //Leemos la constante
 const PORT = process.env.PORT;
-
 
 //Creo la carpeta public
 app.use(express.static('public'));
@@ -37,7 +34,6 @@ const upload = multer({ storage });
 //Convertimos los datos entrantes a formato que entiende el servidor mediante middlewares
 app.use(express.urlencoded());
 app.use(express.json());
-
 
 //Usamos override para habilitar los metodos PUT y DELETE
 app.use(methodOverride('_method'));

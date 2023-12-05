@@ -106,7 +106,52 @@ const adminControllers = {
     
 	putEdit: (req, res) => res.send('Route for Edit a product View'),
     
-	deleteEdit: (req, res) => res.send('Route for Delete a product View'),
+	//Lógica de la funcion que elimina un item de la BD
+	deleteEdit: (req, res) => {
+		const productId = req.params.id; // Obtener el ID del producto a eliminar desde los parámetros de la solicitud
+		console.log('Product ID:', productId); // Verificar el ID del producto
+
+		// Validar si el productId es inválido o no es un número
+		if (!productId || isNaN(productId)) {
+			return res.status(400).send('ID de producto no válido');
+		}
+	
+		// Consulta SQL para eliminar el producto de la base de datos
+		const sqlDeleteProduct = 'DELETE FROM funko_test.product WHERE product_id = ?';
+	
+		// Ejecutar la consulta de eliminación con el ID del producto
+		db.query(sqlDeleteProduct, [productId], (error, results) => {
+			if (error) {
+				console.error('Error al eliminar el producto:', error);
+				return res.status(500).send('Error al eliminar el producto');
+			}
+	
+			// Verificar si no se encontró ningún producto con el ID proporcionado para eliminar
+			if (results.affectedRows === 0) {
+				return res.status(404).send('El producto no fue encontrado');
+			}
+	
+			// Si se eliminó correctamente, muestra la pagina sin el producto eliminado
+			res.redirect('/admin');
+		});
+	},
+	
+	searchProducts: (req, res) => {
+		let searchTerm = req.query.term;
+		console.log("Término de búsqueda recibido:", searchTerm); // Añade esto
+	
+		let searchPattern = `%${searchTerm}%`;
+		console.log("Patrón de búsqueda:", searchPattern); // Y esto
+		let sqlSearch = `SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.licence.licence_id = funko_test.product.licence_id WHERE product_name LIKE ? OR sku LIKE ? OR licence_name LIKE ? ORDER BY product_id`;
+
+		db.query(sqlSearch, [searchPattern, searchPattern, searchPattern], (error, results) => {
+            if (error) {
+                console.error('Error al buscar productos:', error);
+                return res.status(500).send('Error al buscar productos');
+            }
+            res.json(results);
+        });
+    },
 	
 	// Nueva función para servir páginas HTML dinámicas
     servePage: (req, res) => {

@@ -4,11 +4,10 @@ console.log(process.env.HOST, process.env.USER, process.env.DBPASS, process.env.
 
 //Creamos la conexion simple a BBDD, inicia una instancia de una conexion individual, abre y cierra las conexiones de a una a la vez
 const db = mysql.createConnection({
-    host: 'localhost', //process.env.HOST, 
-    user: 'admin', //process.env.USER,
-    password: 'admin', //process.env.DBPASS,
-    database: 'funko_test', //process.env.DB,
-	//port: process.env.DBPORT
+    host: process.env.HOST, 
+    user: process.env.USER,
+    password: process.env.DBPASS,
+    database: process.env.DB,
 });
 
 db.connect(error => {

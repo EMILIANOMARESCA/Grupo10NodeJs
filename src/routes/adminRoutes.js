@@ -16,18 +16,18 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Ejemplo en adminRoutes
 router.get('/', adminControllers.admin);
 router.get('/create', adminControllers.getCreate);
 router.post('/create', upload.array('images', 2), adminControllers.postCreate);
 
-//Creo las rutas que necesito para el admin
-// Ruta dinámica para servir páginas HTML
-router.get('/:page', adminControllers.servePage);
-
 router.get('/edit/:id', adminControllers.getEdit);
 router.put('/edit/:id', adminControllers.putEdit);
-router.delete('/edit/:id', adminControllers.deleteEdit);
+router.delete('/delete/:id', adminControllers.deleteEdit);
+router.get('/search-products', adminControllers.searchProducts);
+
+
+// Ruta dinámica para servir páginas HTML estaticas
+router.get('/:page', adminControllers.servePage);
 
 //Exporto el modulo Routers
 module.exports = router;

@@ -36,9 +36,8 @@
 		<main>
 			<div id="search-buttom">
 				<img src="../img/icons/search_icon.svg" alt="">
-				<input type="search" placeholder="código, nombre o categoría">
+				<input type="search" id="search-button" placeholder="código, nombre o categoría">
 			</div>
-
 
 			<section id="agregar-producto">
 				<h1>
@@ -76,7 +75,10 @@
 									</a>
 								</td>
 								<td>
-									<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
+									<!-- Agregar un enlace para eliminar el producto -->
+									<a href="../admin/delete/<%= product.product_id %>" onclick="deleteEdit('<%= product.product_id %>')">
+										<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
+									</a>
 								</td>
 							</tr>
 						<% }); %>
@@ -110,6 +112,7 @@
 
 		<!--Scripts-->
 		<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-
+		<script src="/js/adminSearch.js"></script>
+		
     </body>
 </html>
