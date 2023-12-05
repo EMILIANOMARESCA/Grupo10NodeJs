@@ -76,9 +76,12 @@
 								</td>
 								<td>
 									<!-- Agregar un enlace para eliminar el producto -->
-									<a href="../admin/delete/<%= product.product_id %>" onclick="deleteEdit('<%= product.product_id %>')">
-										<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
-									</a>
+									<form action="/admin/delete/<%= product.product_id %>" method="POST">
+										<button type="submit">
+											<input type="hidden" name="_method" value="DELETE">
+											<img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
+										</button>
+									</form>
 								</td>
 							</tr>
 						<% }); %>
