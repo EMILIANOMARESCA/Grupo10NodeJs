@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     alert(`Se ha enviado un correo a ${email} con instrucciones para restablecer tu contraseña.`);
 
     // Redirige al usuario a la página principal o a donde quieras.
-    window.location.href = "../../index.html";
+    window.location.href = "/";
   });
 });
