@@ -4,7 +4,7 @@ const mainControllers = require('../controllers/mainController');
 
 
 //Creo las rutas que necesito
-router.get('/home', mainControllers.home);
+router.get('/', mainControllers.index);
 router.get('/contact', mainControllers.contact);
 router.get('/about', mainControllers.about);
 router.get('/faqs', mainControllers.faqs);

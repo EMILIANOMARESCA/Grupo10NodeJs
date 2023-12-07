@@ -1,5 +1,4 @@
 const connect = require('../config/conn'); // Asegúrate de que la ruta sea correcta
-//const sqlProducts = 'SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.licence.licence_id = funko_test.product.licence_id ORDER BY product_id'
 const path = require('path');
 const fs = require('fs');
 
@@ -88,9 +87,119 @@ const adminControllers = {
     },
 	
     
-	getEdit: (req, res) => res.send('Route for Edit a product View'),
-    
-	putEdit: (req, res) => res.send('Route for Edit a product View'),
+   //Procedimiento para editar un producto del sitio
+    getEdit: async (req, res) => {
+        const productId = req.params.id; // Obtiene el ID del producto desde los parámetros de la solicitud
+        console.log('Product ID:', productId); // Verifica el ID del producto, para ver si se ve
+
+        // Valida si el productId es inválido o no es un número
+        if (!productId || isNaN(productId)) {
+            return res.status(400).send('ID de producto no válido');
+        }
+
+        // Consulta SQL para obtener los detalles del producto por su ID con sus tablas de union a licence y category
+        let sqlGetProduct = "SELECT product_id, product_name, product_description, price, stock, discount, sku, CASE dues WHEN 3 THEN '3 CUOTAS SIN INTERES' WHEN 6 THEN '6 CUOTAS SIN INTERES' WHEN 9 THEN '9 CUOTAS CON INTERES' WHEN 12 THEN '12 CUOTAS CON INTERES' END 'dues', image_front, image_back, licence_name, category_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.product.licence_id = funko_test.licence.licence_id INNER JOIN funko_test.category ON funko_test.product.category_id = funko_test.category.category_id WHERE product_id = ?";
+        let sqlCategories = "SELECT category_name FROM funko_test.category";
+        let sqlLicences = "SELECT licence_name FROM funko_test.licence";
+
+        try {
+            const db = await connect(); // Establece la conexión a la BD
+
+            // Ejecuta la consulta para obtener los detalles del producto por su ID
+            const [productDetails] = await db.query(sqlGetProduct, [productId]);
+            // Ejecutar la consulta para categorías
+            const [categories] = await db.query(sqlCategories);
+            // Ejecutar la consulta para licencias
+            const [licences] = await db.query(sqlLicences);
+
+            // Verifica si no se encontró ningún producto con el ID proporcionado
+            if (productDetails.length === 0) {
+                return res.status(404).render('error', { message: 'El producto no fue encontrado' });
+            }
+
+            // Renderizamos edit.ejs con los detalles del producto obtenido
+            res.render('edit', { product: productDetails[0], categories: categories, licences: licences });
+        } catch (error) {
+            console.error('Error al obtener detalles del producto:', error);
+            return res.status(500).send('Error al obtener detalles del producto');
+        }
+    },
+
+    //Procedimiento para salvar los cambios del getEdit
+    postEdit: async (req, res) => {
+        const productId = req.params.id; // Obtiene el ID del producto desde los parámetros de la solicitud
+        console.log('Product ID:', productId); // Verifica el ID del producto a ver si es correcto y se ve
+
+        // Valida si el productId es inválido o no es un número
+        if (!productId || isNaN(productId)) {
+            return res.status(400).send('ID de producto no válido');
+        }
+
+        // Se extraen los datos actualizados del cuerpo de la solicitud
+        const {
+            product_name,
+            product_description,
+            sku,
+            price,
+            stock,
+            discount,
+            dues,
+            categoria,
+            licencia
+        } = req.body;
+
+        // Validación básica
+        if (!product_name || !product_description || !sku || !price || isNaN(price) || !stock || isNaN(stock)) {
+            return res.status(400).send('Datos inválidos.');
+        }
+
+        // Aca no se como actualizar el tema de las imagenes o si lo dejamos sin nada
+
+        // Obtener el ID de licencia y categoría
+        const sqlLicence = "SELECT licence_id FROM funko_test.licence WHERE licence_name = ?";
+        const sqlCategory = "SELECT category_id FROM funko_test.category WHERE category_name = ?";
+
+        try {
+            const db = await connect(); // Establece la conexión a la BD
+
+            // Obtener el ID de licencia
+            const [licenceResults] = await db.query(sqlLicence, [licencia]);
+            if (licenceResults.length === 0) {
+                return res.status(400).send('Licencia no encontrada');
+            }
+            const licence_id = licenceResults[0].licence_id;
+
+            // Obtener el ID de categoría
+            const [categoryResults] = await db.query(sqlCategory, [categoria]);
+            if (categoryResults.length === 0) {
+                return res.status(400).send('Categoría no encontrada');
+            }
+            const category_id = categoryResults[0].category_id;
+
+            // Actualizar el producto
+            const sqlUpdateProduct = `UPDATE funko_test.product 
+                                    SET product_name = ?, product_description = ?, price = ?, stock = ?, discount = ?, sku = ?, dues = ?, licence_id = ?, category_id = ?
+                                    WHERE product_id = ?`;
+
+            await db.query(sqlUpdateProduct, [
+                product_name,
+                product_description,
+                price,
+                stock,
+                discount,
+                sku,
+                dues,
+                licence_id,
+                category_id,
+                productId // Utiliza el ID del producto para realizar la actualización en el registro correspondiente
+            ]);
+
+            res.redirect('/admin'); // Redirige al usuario a la página de administración después de la actualización exitosa
+        } catch (error) {
+            console.error('Error al actualizar el producto:', error);
+            return res.status(500).send('Error al procesar la solicitud de actualización');
+        }
+    },    
     
     deleteEdit: async (req, res) => {
         const productId = req.params.id; // Obtener el ID del producto a eliminar desde los parámetros de la solicitud
