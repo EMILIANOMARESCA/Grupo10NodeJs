@@ -24,14 +24,22 @@ function updateProductList(products) {
             <td>${product.product_name}</td>
             <td>${product.licence_name}</td>
             <td>
-                <a href="../admin/edit.html">
-                    <img src="../../img/icons/edit_pencil.svg" alt="Editar ítem">
-                </a>
+                <!-- Agregar un enlace para editar el producto -->
+                <form action="/admin/edit/${product.product_id}" method="GET">
+                    <button type="submit">
+                        <input type="hidden" name="_method" value="EDIT">
+                        <img src="../img/icons/edit_pencil.svg" alt="Editar ítem">
+                    </button>
+                </form>
             </td>
             <td>
-                <a href="../admin/delete/${product.product_id}" onclick="deleteEdit('${product.product_id}')">
-                    <img src="../../img/icons/delete_trash.svg" alt="Eliminar ítem">
-                </a>
+                <!-- Agregar un enlace para eliminar el producto -->
+                <form action="/admin/delete/${product.product_id}" method="POST">
+                    <button type="submit">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <img src="../img/icons/delete_trash.svg" alt="Eliminar ítem">
+                    </button>
+                </form>
             </td>
         `;
 

@@ -33,8 +33,9 @@
             </ul>
         </nav>
     </header><!--Fin del Header-->
+    
     <main class="edit">
-        <form action="/admin/edit" method="POST" enctype="multipart/form-data">
+        <form action="/admin/edit/<%= product.product_id %>" method="POST" >
             <article class="edit-item">
                 <h3 class="edit-item__text">Editar item</h3>
                     <div class="edit-contenedor">
@@ -114,31 +115,27 @@
                 </article>
             </section>
             <section class="edit-images container">
-                <!-- Mostrar imagen de frente si existe -->
-                <% if(product.image_front) { %>
-                    <div class="existing-image">
-                        <img src="<%= product.image_front %>" alt="Imagen Frontal del Producto">
-                        <p>Imagen Frontal</p>
-                    </div>
-                <% } else { %>
-                    <p>No hay imagen frontal para mostrar</p>
-                <% } %>
-            
-                <!-- Mostrar imagen de dorso si existe -->
-                <% if(product.image_back) { %>
-                    <div class="existing-image">
-                        <img src="<%= product.image_back %>" alt="Imagen Posterior del Producto">
-                        <p>Imagen Posterior</p>
-                    </div>
-                <% } else { %>
-                    <p>No hay imagen posterior para mostrar</p>
-                <% } %>
-
-                <!-- Botones para enviar y limpiar el formulario -->
-                <button type="submit" class="admin-submit">Modificar Producto</button>
+                <label class="admin-label" for="subir-archivos">Imágenes: </label>
+                <input class="upload-files" type="file" id="subir-archivos"/>
+                <article class="upload-images">
+                    <% if(product.image_front || product.image_back) { %>
+                        <div class="images-container">
+                                <div class="upload-images__content">
+                                    <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
+                                    <h4 class="upload-images__text">Frente</h4>
+                                    <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
+                                    <h4 class="upload-images__text">Dorso</h4>
+                                </div>
+                        </div>
+                    <% } else { %>
+                        <h4 class="upload-images__text">No hay imágenes para mostrar</h4>
+                    <% } %>
+                </article>     
             </section>
+            <button type="submit" class="admin-submit">Modificar Producto</button>
         </form>    
     </main>
+
     <footer class="footer"><!--PIE: Inicio del Footer-->
         <nav class="navbar container"><!--barra de navegacion en el footer-->
             <ul class="navbar__item">
