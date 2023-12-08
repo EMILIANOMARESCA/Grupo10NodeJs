@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home | Funkoshop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+
+    <header><!--CABECERA: Inicio del Header-->
+        <nav class="navbar container">
+            <picture class="navbar__logo">
+                <a href="/">
+                    <img src="../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+                </a>
+            </picture>
+
+            <ul class="navbar__menu">
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="/pages/shop/shop.html">SHOP <iconify-icon
+                            icon="ion:chevron-down"></iconify-icon></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="" class="submenu__link">Funkos</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="" class="submenu__link">Remeras</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="" class="submenu__link">Llaveros</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/pages/admin/contact.html">CONTACTO</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/auth/login">LOGIN</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__cart" href="/pages/shop/cart.html">
+                        <img src="../img/icons/cart-icon.svg" alt="Icono de carrito">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header><!--Fin del Header-->
+
+    <section class="hero"> <!--BANNER hero-->
+        <article class="hero__content container">
+            <h3 class="hero__tittle">Nuevos Ingresos</h3>
+            <p class="hero__text">Descrubrí el próximo Funko Pop de tu colección</p>
+            <a class="hero__link" href="/pages/shop/shop.html">SHOP</a>
+        </article>
+    </section>
+
+        <% licencias.forEach(function(licencia, index) { %>
+            <% if (index % 2 === 0) { %>
+                <!-- Licencia con imagen a la derecha -->
+                <section class="collection container">
+                    <article class="collection__content">
+                        <h3 class="collection__tittle"><%= licencia.licence_name %></h3>
+                        <p class="collection__text"><%= licencia.licence_description %></p>
+                        <a class="collection__link" href="/pages/shop/shop.html">Ver Colección</a>
+                    </article>
+
+                    <picture class="collection__cover">
+                        <img src="<%= licencia.licence_image %>"
+                            alt="Imagen de la colección <%= licencia.licence_name %>">
+                    </picture>
+                </section>
+            <% } else { %>
+                <!-- Licencia con imagen a la izquierda -->
+                <section class="collection container">
+                    <picture class="collection__cover">
+                        <img src="<%= licencia.licence_image %>"
+                            alt="Imagen de la colección <%= licencia.licence_name %>">
+                    </picture>
+
+                    <article class="collection__content">
+                        <h3 class="collection__tittle"><%= licencia.licence_name %></h3>
+                        <p class="collection__text"><%= licencia.licence_description %></p>
+                        <a class="collection__link" href="/pages/shop/shop.html">Ver Colección</a>
+                    </article>
+                </section>
+            <% } %>
+        <% }); %>
+
+        <section class="slider container glide">
+            <h2 class="slider__tittle">Últimos Lanzamientos</h2>
+            <div class="glide__track" data-glide-el="track">
+                <ul class="slider__items glide__slides">
+                    <% productos.forEach(function(producto) { %>
+                        <li class="slider__item glide__slide">
+                            <article class="card-item">
+                                <a class="card-item__link" href="/pages/shop/shop.html">
+                                    <picture class="card-item__cover">
+                                        <span class="card-item__tag">Nuevo</span>
+                                        <img class="card-item__img--front" src="../../img<%= producto.image_front %>"
+                                             alt="Figura coleccionable Funko de <%= producto.product_name %>">
+                                        <img class="card-item__img--back" src="../../img<%= producto.image_back %>"
+                                             alt="Figura coleccionable Funko de <%= producto.product_name %> en caja">
+                                    </picture>.
+                                    <div class="card-item__content">
+                                        <p class="card-item__licence"><%= producto.licence_name %></p>
+                                        <h4 class="card-item__name"><%= producto.product_name %></h4>
+                                        <p class="card-item__price">$ <%= producto.price %></p>
+                                        <p class="card-item__promo"><%= producto.dues %></p>
+                                    </div>
+                                </a>
+                            </article>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
+                        icon="tabler:chevron-left"></iconify-icon></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
+                        icon="tabler:chevron-right"></iconify-icon></button>
+            </div>
+        </section>
+
+    </main><!--CUERPO: Fin del Main-->
+
+    <footer class="footer"><!--PIE: Inicio del Footer-->
+        <nav class="navbar container"><!--barra de navegacion en el footer-->
+            <ul class="navbar__item">
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/pages/shop/shop.html">SHOP</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/auth/login">LOGIN</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/pages/admin/contact.html">CONTACTO</a>
+                </li>
+            </ul>
+            <picture>
+                <img src="../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
+        </nav>
+
+        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer><!--PIE: Fin del Footer-->
+
+
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/js/glide.js"></script>
+</body>
+
+</html>

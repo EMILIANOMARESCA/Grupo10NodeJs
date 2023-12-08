@@ -19,9 +19,8 @@ const upload = multer({ storage: storage });
 router.get('/', adminControllers.admin);
 router.get('/create', adminControllers.getCreate);
 router.post('/create', upload.array('images', 2), adminControllers.postCreate);
-
 router.get('/edit/:id', adminControllers.getEdit);
-router.put('/edit/:id', adminControllers.putEdit);
+router.post('/edit/:id', adminControllers.postEdit);
 router.post('/delete/:id', adminControllers.deleteEdit);
 router.get('/search-products', adminControllers.searchProducts);
 

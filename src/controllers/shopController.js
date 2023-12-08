@@ -1,3 +1,6 @@
+const connect = require('../config/conn'); // Asegúrate de que la ruta sea correcta
+require('dotenv').config();
+
 const shopControllers = {
     shop: (req, res) => res.send('Route for Shop View'),
     getItem: (req, res) => res.send('Route for find and retrieve a product from an ID View'),
