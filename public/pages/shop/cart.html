@@ -1,124 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Carrito | Funkoshop</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-    <link rel="stylesheet" href="../../css/index.css">
-</head>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+    />
+    <link rel="stylesheet" href="../../css/index.css" />
+  </head>
 
-<body>
+  <body>
+    <header>
+      <!--CABECERA: Inicio del Header-->
+      <nav class="navbar container">
+        <picture class="navbar__logo">
+          <a href="../../index.html">
+            <img
+              src="../../img/branding/logo_light_horizontal.svg"
+              alt="Isologotipo de la Marca Funkoshop"
+            />
+          </a>
+        </picture>
 
-    <header><!--CABECERA: Inicio del Header-->
-        <nav class="navbar container">
-            <picture class="navbar__logo">
-                <a href="../../index.html">
-                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
-                </a>
-            </picture>
-
-            <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="../../pages/shop/shop.html">SHOP <iconify-icon
-                            icon="ion:chevron-down"></iconify-icon></a>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Funkos</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Remeras</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Llaveros</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../pages/admin/contact.html">CONTACTO</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../pages/admin/login.html">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__cart" href="../../pages/shop/cart.html">
-                        <img src="../../img/icons/cart-icon.svg" alt="Icono de carrito">
-                    </a>
-                </li>
+        <ul class="navbar__menu">
+          <li class="navbar__item with-submenu">
+            <a class="navbar__link with-icon" href="../../pages/shop/shop.html"
+              >SHOP <iconify-icon icon="ion:chevron-down"></iconify-icon
+            ></a>
+            <ul class="submenu">
+              <li class="submenu__item">
+                <a href="" class="submenu__link">Funkos</a>
+              </li>
+              <li class="submenu__item">
+                <a href="" class="submenu__link">Remeras</a>
+              </li>
+              <li class="submenu__item">
+                <a href="" class="submenu__link">Llaveros</a>
+              </li>
             </ul>
-        </nav>
-    </header><!--Fin del Header-->
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/contact.html"
+              >CONTACTO</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/login.html"
+              >LOGIN</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__cart" href="../../pages/shop/cart.html">
+              <img src="../../img/icons/cart-icon.svg" alt="Icono de carrito" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--Fin del Header-->
 
-    <main class="main-container"><!--CUERPO: Inicio del Main-->
-		<h1>CARRITO DE COMPRAS</h1>
-			<div class="cart-columns">
-				<span>Detalle de Producto</span>
-				<span>Cantidad</span>
-				<span>Total</span>
-				<span></span>
-			</div>	
+    <main class="cart container">
+      <!--CUERPO: Inicio del Main-->
+      <div>
+          <h1 class="cart-title__name">CARRITO DE COMPRAS</h1>
+      </div>
+      <section class="cart-columns">
+        <p class="cart-columns__text">Detalle de Producto</p>
+        <p class="cart-columns__text">Cantidad</p>
+        <p class="cart-columns__text">Total</p>
+      </section>
 
-		  <!-- Esto se repetiría por cada producto en el carrito -->
-			<div class="cart-item">
-				<div class="product-details">
-					<img src="url_de_la_foto" alt="producto">
-					<div>
-						<p>Nombre del producto</p>
-						<p>Nombre de la colección</p>
-						<p>Precio unitario</p>
-					</div>
-				</div>
-					<div class="quantity">
-						<button>-</button>
-						<span>1</span>
-						<button>+</button>
-					</div>
-					<div class="total-price">
-						Total
-					</div>
-					<div>
-						<button class="remove-item">X</button>
-					</div>
+      <!-- Esto se repetiría por cada producto en el carrito -->
+      <section class="cart-product">
+        <article class="cart-item">
+            <img src="../../img/star-wars/baby-yoda-1.webp" class="cart-preview__img" alt="producto" />
+            <div class="cart-item__text">
+                <h3>Baby yoda blueball</h3>
+                <h4>star wars</h4>
+                <br>
+                <p>Precio: $1799,99 </p>
+            </div>
+        </article>
+        <article class="item-quantity">
+          <input type="text" class="item__input cart-input" placeholder="0">
+          <span class="item-quantity__fields">
+              <button class="btn btn-quantity btn-cart__size">+</button>
+              <button class="btn btn-quantity btn-cart__size">-</button>
+          </span>
+        </article>
+        <article class="total-price">
+            <h3>Total: $1799,99</h3>
+            <button class="btn-quantity remove-item">X</button>
+        </article>
+      </section>
+      <section class="cart-product">
+        <article class="cart-item">
+            <img src="../../img/star-wars/baby-yoda-1.webp" class="cart-preview__img" alt="producto" />
+            <div class="cart-item__text">
+                <h3>Baby yoda blueball</h3>
+                <h4>star wars</h4>
+                <br>
+                <p>Precio: $1799,99 </p>
+            </div>
+        </article>
+        <article class="item-quantity">
+          <input type="text" class="item__input cart-input" placeholder="0">
+          <span class="item-quantity__fields">
+              <button class="btn btn-quantity btn-cart__size">+</button>
+              <button class="btn btn-quantity btn-cart__size">-</button>
+          </span>
+        </article>
+        <article class="total-price">
+            <h3>Total: $1799,99</h3>
+            <button class="btn-quantity remove-item">X</button>
+        </article>
+      </section>
+      <!-- Resumen compra -->
+      <section class="summary">
+          <article>
+              <h2 class="cart-title__name">Resumen</h2>
+          </article>
+        <article class="cart-summary">
+          <span class="cart-summary__container"><p class="cart-summary__text">Cantidad: </p> <p class="cart-summary__price">$1799,99</p></span>
+          <span class="cart-summary__container"><p class="cart-summary__text">Subtotal: </p> <p class="cart-summary__price">x</p></span>
+          <span class="cart-summary__container"><p class="cart-summary__text">Envío: </p> <p class="cart-summary__price">x</p></span>
+          <span class="cart-summary__containerTotal"><p class="cart-summary__total">Total: </p> <p class="cart-summary__totalPrice">x</p></span>
+        </article>
+        <article>
+            <button class="btn btn--primary btn-cart__large">IR A PAGAR</button>
+        </article>
+    </section>
+    </main>
+    <!--CUERPO: Fin del Main-->
 
-				<div class="cart-summary">
-					<h2>Resumen</h2>
-					<p>Cantidad de Elementos: X</p>
-					<p>Subtotal: X</p>
-					<p>Envío: X</p>
-					<p>Total: X</p>
-				</div>
+    <footer class="footer">
+      <!--PIE: Inicio del Footer-->
+      <nav class="navbar container">
+        <!--barra de navegacion en el footer-->
+        <ul class="navbar__item">
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/login.html"
+              >INGRESAR</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/contact.html"
+              >CONTACTO</a
+            >
+          </li>
+        </ul>
+        <picture class="footer__logo">
+          <img
+            src="../../img/branding/isotype.svg"
+            alt="Isotipo de la marca Funkoshop"
+          />
+        </picture>
+      </nav>
 
-				<button class="checkout">Ir a Pagar</button>
-	</main><!--CUERPO: Fin del Main-->
-
-    <footer class="footer"><!--PIE: Inicio del Footer-->
-        <nav class="navbar container"><!--barra de navegacion en el footer-->
-            <ul class="navbar__item">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../pages/admin/login.html">INGRESAR</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../pages/admin/contact.html">CONTACTO</a>
-                </li>
-            </ul>
-            <picture>
-                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" </picture>
-        </nav>
-
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer><!--PIE: Fin del Footer-->
-
+      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+    <!--PIE: Fin del Footer-->
 
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-</body>
-
+  </body>
 </html>

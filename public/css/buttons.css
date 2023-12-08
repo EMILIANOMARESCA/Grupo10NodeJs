@@ -1,0 +1,58 @@
+/* BUTTONS STYLES */
+
+.btn {
+    border: none;
+    cursor: pointer;
+}
+
+/* COLORS */
+
+.btn--primary {
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    transition: background 0.2s ease-in-out;
+}
+
+.btn--primary:hover {
+    background-color: var(--secondary-solid);
+}
+
+/* SIZES */
+
+.btn--medium {
+    padding: var(--spacing-8) var(--spacing-16);
+}
+
+.btn--large {
+    padding: var(--spacing-12) var(--spacing-28);
+}
+
+/* QUANTITY */
+/*se utiliza en carrito e item */
+
+.item-quantity{
+    display: flex;
+    gap: var(--spacing-8);
+}
+
+.item-quantity__fields{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+}
+.btn-quantity {
+    color: #fff;
+    padding: 1px;
+    
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+}
+
+.item__input {
+    font-size: var(--font-large);
+    padding: 6px var(--spacing-16);
+    text-align: center;
+    border: 0.5px solid var(--gray-border-solid);
+    background: var(--light-font-solid);
+}

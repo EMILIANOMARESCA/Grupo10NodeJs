@@ -79,6 +79,8 @@ const authControllers = {
             res.status(500).send('Error en el servidor');
         }
     },
+    
+    logout:(req, res) => res.send('Esta ruta desloguea')
 };
 
 
