@@ -1,12 +1,14 @@
 const connect = require('../config/conn'); // Asegúrate de que la ruta sea correcta
 const path = require('path');
 const fs = require('fs');
+require('dotenv').config();
+
 
 const adminControllers = {
 	
 	admin: async (req, res) => {
 		console.log('Controlador de administración ejecutado');
-		let sqlProducts = 'SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.licence.licence_id = funko_test.product.licence_id ORDER BY product_id'
+		let sqlProducts = `SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM ${process.env.DB}.product INNER JOIN ${process.env.DB}.licence ON ${process.env.DB}.licence.licence_id = ${process.env.DB}.product.licence_id ORDER BY product_id`
 		try {
             const db = await connect(); // Establecer la conexión
 			const [results] = await db.query(sqlProducts);
@@ -19,8 +21,8 @@ const adminControllers = {
     },		
 
     getCreate: async (req, res) => {
-        let sqlCategories = "SELECT category_name FROM funko_test.category";
-        let sqlLicences = "SELECT licence_name FROM funko_test.licence";
+        let sqlCategories = `SELECT category_name FROM ${process.env.DB}.category`;
+        let sqlLicences = `SELECT licence_name FROM ${process.env.DB}.licence`;
 
         try {
             const db = await connect(); // Establecer la conexión
@@ -55,8 +57,8 @@ const adminControllers = {
         const image_back = req.files[1] ? req.files[1].path : null;
         const create_time = new Date().toISOString().slice(0, 19).replace('T', ' '); // Formato de fecha para MySQL
 
-        const sqlLicence = "SELECT licence_id FROM funko_test.licence WHERE licence_name = ?";
-        const sqlCategory = "SELECT category_id FROM funko_test.category WHERE category_name = ?";
+        const sqlLicence = `SELECT licence_id FROM ${process.env.DB}.licence WHERE licence_name = ?`;
+        const sqlCategory = `SELECT category_id FROM ${process.env.DB}.category WHERE category_name = ?`;
 
         try {
             const db = await connect(); // Establecer la conexión
@@ -76,7 +78,7 @@ const adminControllers = {
             const category_id = categoryResults[0].category_id;
 
             // Insertar el producto
-            let sqlInsertProd = "INSERT INTO funko_test.product (product_name, product_description, price, stock, discount, sku, dues, image_front, image_back, create_time, licence_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            let sqlInsertProd = `INSERT INTO ${process.env.DB}.product (product_name, product_description, price, stock, discount, sku, dues, image_front, image_back, create_time, licence_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
             await db.query(sqlInsertProd, [product_name, product_description, price, stock, discount, sku, dues, image_front, image_back, create_time, licence_id, category_id]);
 
 			res.redirect('/admin'); // Redirigir al usuario a la página de administración
@@ -98,9 +100,9 @@ const adminControllers = {
         }
 
         // Consulta SQL para obtener los detalles del producto por su ID con sus tablas de union a licence y category
-        let sqlGetProduct = "SELECT product_id, product_name, product_description, price, stock, discount, sku, CASE dues WHEN 3 THEN '3 CUOTAS SIN INTERES' WHEN 6 THEN '6 CUOTAS SIN INTERES' WHEN 9 THEN '9 CUOTAS CON INTERES' WHEN 12 THEN '12 CUOTAS CON INTERES' END 'dues', image_front, image_back, licence_name, category_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.product.licence_id = funko_test.licence.licence_id INNER JOIN funko_test.category ON funko_test.product.category_id = funko_test.category.category_id WHERE product_id = ?";
-        let sqlCategories = "SELECT category_name FROM funko_test.category";
-        let sqlLicences = "SELECT licence_name FROM funko_test.licence";
+        let sqlGetProduct = `SELECT product_id, product_name, product_description, price, stock, discount, sku, CASE dues WHEN 3 THEN '3 CUOTAS SIN INTERES' WHEN 6 THEN '6 CUOTAS SIN INTERES' WHEN 9 THEN '9 CUOTAS CON INTERES' WHEN 12 THEN '12 CUOTAS CON INTERES' END 'dues', image_front, image_back, licence_name, category_name FROM ${process.env.DB}.product INNER JOIN ${process.env.DB}.licence ON ${process.env.DB}.product.licence_id = ${process.env.DB}.licence.licence_id INNER JOIN ${process.env.DB}.category ON ${process.env.DB}.product.category_id = ${process.env.DB}.category.category_id WHERE product_id = ?`;
+        let sqlCategories = `SELECT category_name FROM ${process.env.DB}.category`;
+        let sqlLicences = `SELECT licence_name FROM ${process.env.DB}.licence`;
 
         try {
             const db = await connect(); // Establece la conexión a la BD
@@ -148,7 +150,7 @@ const adminControllers = {
             const db = await connect(); // Establece la conexión a la BD
     
             // Obtener category_id basado en categoria
-            const categoryQuery = "SELECT category_id FROM funko_test.category WHERE category_name = ?";
+            const categoryQuery = `SELECT category_id FROM ${process.env.DB}.category WHERE category_name = ?`;
             const [[categoryResult]] = await db.query(categoryQuery, [categoria]);
             const category_id = categoryResult ? categoryResult.category_id : null;         
 
@@ -158,7 +160,7 @@ const adminControllers = {
             }
     
             // Obtener licence_id basado en licencia
-            const licenceQuery = "SELECT licence_id FROM funko_test.licence WHERE licence_name = ?";
+            const licenceQuery = `SELECT licence_id FROM ${process.env.DB}.licence WHERE licence_name = ?`;
             const [[licenceResult]] = await db.query(licenceQuery, [licencia]);
             const licence_id = licenceResult ? licenceResult.licence_id : null;
     
@@ -168,7 +170,7 @@ const adminControllers = {
             }
     
             // Preparar la consulta de actualización del producto
-            const sqlUpdateProduct = `UPDATE funko_test.product SET product_name = ?, product_description = ?, price = ?, stock = ?, discount = ?, sku = ?, dues = ?, licence_id = ?, category_id = ? WHERE product_id = ?`;
+            const sqlUpdateProduct = `UPDATE ${process.env.DB}.product SET product_name = ?, product_description = ?, price = ?, stock = ?, discount = ?, sku = ?, dues = ?, licence_id = ?, category_id = ? WHERE product_id = ?`;
     
             // Ejecutar la consulta de actualización
             await db.query(sqlUpdateProduct, [
@@ -202,7 +204,7 @@ const adminControllers = {
         }
 
         // Consulta SQL para eliminar el producto de la base de datos
-        const sqlDeleteProduct = 'DELETE FROM funko_test.product WHERE product_id = ?';
+        const sqlDeleteProduct = 'DELETE FROM ${process.env.DB}.product WHERE product_id = ?';
 
         try {
             const db = await connect(); // Establecer la conexión
@@ -229,7 +231,7 @@ const adminControllers = {
 
         let searchPattern = `%${searchTerm}%`;
         console.log("Patrón de búsqueda:", searchPattern);
-        let sqlSearch = `SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM funko_test.product INNER JOIN funko_test.licence ON funko_test.licence.licence_id = funko_test.product.licence_id WHERE product_name LIKE ? OR sku LIKE ? OR licence_name LIKE ? ORDER BY product_id`;
+        let sqlSearch = `SELECT product_id, sku, TRIM(product_name) AS product_name, TRIM(licence_name) as licence_name FROM ${process.env.DB}.product INNER JOIN ${process.env.DB}.licence ON ${process.env.DB}.licence.licence_id = ${process.env.DB}.product.licence_id WHERE product_name LIKE ? OR sku LIKE ? OR licence_name LIKE ? ORDER BY product_id`;
 
         try {
             const db = await connect(); // Establecer la conexión

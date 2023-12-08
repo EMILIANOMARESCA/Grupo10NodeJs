@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const connect  = require('../config/conn'); // Asegúrate de que la ruta sea correcta
+require('dotenv').config();
 
 const authControllers = {
 
@@ -14,7 +15,7 @@ const authControllers = {
         
         try {
             const db = await connect(); // Establecer la conexión
-            const loginSql = 'SELECT email, password FROM funko_test.user WHERE email = ?';
+            const loginSql = `SELECT email, password FROM ${process.env.DB}.user WHERE email = ?`;
             const [results] = await db.query(loginSql, [email]);
 
             if (results.length > 0) {
@@ -45,7 +46,7 @@ const authControllers = {
         try {
             const db = await connect(); // Establecer la conexión
             // Verificar si el usuario ya existe
-            const userExistsQuery = 'SELECT user_id FROM funko_test.user WHERE email = ?';
+            const userExistsQuery = `SELECT user_id FROM ${process.env.DB}.user WHERE email = ?`;
             console.log("Email buscado:", email);
             const [userExistsResult] = await db.query(userExistsQuery, [email]);
             console.log("Resultado de la consulta:", userExistsResult);
@@ -67,7 +68,7 @@ const authControllers = {
             };
 
             // Insertar el nuevo usuario en la base de datos
-            const insertQuery = 'INSERT INTO funko_test.user SET ?';
+            const insertQuery = `INSERT INTO ${process.env.DB}.user SET ?`;
             await db.query(insertQuery, newUser);
 
             // Redirigir al usuario a la página de inicio de sesión u otra página relevante
