@@ -8,6 +8,7 @@ const authRoutes = require('./src/routes/authRoutes');
 const methodOverride = require('method-override');
 require('dotenv').config(); //Requerimos la dependencia .env
 const multer = require('multer');
+const bodyParser = require('body-parser');
 
 //Leemos la constante
 const PORT = process.env.PORT;
@@ -32,7 +33,8 @@ const upload = multer({ storage });
 
 
 //Convertimos los datos entrantes a formato que entiende el servidor mediante middlewares
-app.use(express.urlencoded());
+//app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Usamos override para habilitar los metodos PUT y DELETE
