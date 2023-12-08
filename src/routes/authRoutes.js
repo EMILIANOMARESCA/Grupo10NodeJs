@@ -8,6 +8,7 @@ router.get('/login', authControllers.getLogin);
 router.post('/login', authControllers.postLogin);
 router.get('/register', authControllers.getRegister );
 router.post('/register', authControllers.postRegister);
+router.get('/logout', authControllers.postRegister);
 
 
 //Exporto el modulo Routers

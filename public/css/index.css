@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css');
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css');
+@import url('buttons.css');
 
 :root {
     /* Paleta de colores */
@@ -1206,5 +1207,197 @@ iconify-icon {
 .card-item__promo {
     font-size: var(--font-xsmall);
     color: var(--secondary-solid);
+    font-weight: 700;
+}
+
+/* ------ CARRITO ------- */
+
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-36);
+    padding: var(--spacing-36);
+}
+
+.cart-title__name{
+    font-size: var(--font-xlarge);
+    font-family: var(--alternative-font);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--primary-solid);
+    display: inline-flex;
+}
+
+.cart-columns{
+    width: 100%;
+    height: 51px;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    background: var(--light-bg-solid);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.cart-columns__text{
+    font-size: var(--font-xsmall);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Items carrito */
+
+
+.cart-product{
+    max-width: 1220px;
+    width: 100%;
+    height: 195px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    border-radius: 25px;
+    background: var(--light-bg-solid);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.cart-preview__img{
+    width: 100px;
+}
+.cart-item{
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-28);
+}
+.cart-item__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cart-item__text h3{
+    font-size: var(--font-small);
+    color: var(--placeholder-font-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.cart-item__text h4{
+    font-size: var(--font-xsmall);
+    color: var(--dark-bg-solid);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.cart-item__text p{
+    font-size: var(--font-xsmall);
+    color: var(--dark-bg-solid);
+    font-weight: 400;
+}
+
+
+.cart-input {
+    max-width: 89px;
+    max-height: 29px;
+    width: 100%;
+}
+.btn-cart__size{
+    width: 13px;
+    height: 13px;
+    margin: 1px;
+    background-color: var(--primary-solid);
+}
+.total-price{
+    display: flex;
+    gap: var(--spacing-36);
+    align-items: center;
+}
+.total-price h3{
+    color: var(--dark-bg-solid);
+    font-size: var(--font-medium);
+    font-weight: 400;
+}
+.remove-item{
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-medium);
+    font-weight: 700;
+    
+    border: 2px solid var(--primary-solid);
+    border-radius: 100%;
+    background: #fff;
+    color: var(--primary-solid);
+    cursor: pointer;
+}
+
+/* RESUMEN COMPRA */
+
+.summary{
+    width: 100%;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;    
+}
+
+.cart-summary{
+    width: 400px;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-24);
+    gap: 20px;
+
+    border-radius: 10px;
+    background: var(--light-bg-solid);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+.cart-summary__container,
+.cart-summary__containerTotal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.cart-summary__text{
+
+    font-size: var(--font-xsmall);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.cart-summary__price{
+    color: var(--dark-bg-solid);
+    font-weight: 400;
+}
+
+.cart-summary__containerTotal{
+    border-top: 2px solid var(--primary-solid);  
+    padding-top: 16px;
+}
+.cart-summary__total{
+    font-size: var(--font-medium);
+    text-transform: uppercase;
+    font-weight: 600;  
+}
+.cart-summary__totalPrice{
+    color: var(--dark-bg-solid);
+    font-weight: 400;
+   }
+
+   /* BOTON PAGAR */
+
+.btn-cart__large{
+    width: 400px;
+    height: 68px;
+    
+
+    font-size: 32px;
     font-weight: 700;
 }
