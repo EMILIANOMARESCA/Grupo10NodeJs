@@ -551,6 +551,7 @@ iconify-icon {
     width: 32px;
 }
 
+
 .admin-main {
   display: flex;
   justify-content: center;
@@ -558,11 +559,15 @@ iconify-icon {
   min-height: calc(100vh-144px-343px);
 }
 
+.mi-seccion{
+    width: 80%;
+}
+
 .admin-main h1 {
     color: #1F1F1F;
     text-align: center;
 	font-family: var(--alternative-font);
-    font-size: 42px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -575,7 +580,7 @@ iconify-icon {
     color: #1F1F1F;
     text-align: center;
 	font-family: var(--alternative-font);
-    font-size: 32px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -585,12 +590,13 @@ iconify-icon {
 
 .admin-main section {
   text-align: center;
+  width: 70%;
 }
 
 .admin-main form {
     color: #000;
     font-family: var(--base-font);
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -616,7 +622,7 @@ iconify-icon {
 }
 
 .admin-main input {
-	width: 208.6px;
+	width: 300px;
     border: none; /* Quitamos el borde por defecto */
     border-bottom: 2px solid #F33; /* Agregamos la línea inferior */
     background: transparent; /* Hacemos el fondo transparente */
@@ -645,13 +651,14 @@ iconify-icon {
 }
 
 .admin-main input[type="submit"] {
-	width: 102.995px;
-    height: 39.062px;
+	width: 145px;
+    height: 45px;
     flex-shrink: 0;
 	background: #F33;
 	color: #FFF;
+    border-radius: 50px;
 	font-family: var(--base-font);
-	font-size: 12px;
+	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -676,6 +683,10 @@ iconify-icon {
     justify-content: space-between; /* Separa los elementos entre sí */
 }
 
+.login__boton{
+    border-radius: 50px;
+}
+
 .checkbox-section {
     display: flex;
     align-items: center;
@@ -692,7 +703,7 @@ iconify-icon {
 .pass-link {
     color: #1D84B5;
     text-decoration: none;  /* Esto es para quitar el subrayado, pero es opcional */
-	font-size: 14px;
+	font-size: 18px;
 	font-family: var(--base-font);
     padding: var(--spacing-8);
 
