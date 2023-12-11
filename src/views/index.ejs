@@ -98,7 +98,7 @@
                     <% productos.forEach(function(producto) { %>
                         <li class="slider__item glide__slide">
                             <article class="card-item">
-                                <a class="card-item__link" href="/pages/shop/shop.html">
+                                <a class="card-item__link" href="/shop/item/<%= producto.product_id %>">
                                     <picture class="card-item__cover">
                                         <span class="card-item__tag">Nuevo</span>
                                         <img class="card-item__img--front" src="../../img<%= producto.image_front %>"
