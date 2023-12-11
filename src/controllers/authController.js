@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const connect  = require('../config/conn'); // Asegúrate de que la ruta sea correcta
+const { getConnection } = require('../config/conn'); // Asegúrate de que la ruta sea correcta
 require('dotenv').config();
 
 const authControllers = {
@@ -9,17 +9,16 @@ const authControllers = {
         res.render('login');
     },
 
-
     postLogin: async (req, res) => {
         const { email, password } = req.body;
         
+        let connection;
         try {
-            const db = await connect(); // Establecer la conexión
+            connection = await getConnection();
             const loginSql = `SELECT email, password FROM ${process.env.DB}.user WHERE email = ?`;
-            const [results] = await db.query(loginSql, [email]);
+            const [results] = await connection.query(loginSql, [email]);
 
             if (results.length > 0) {
-                // Utilizar await con bcrypt.compare ya que es una operación asíncrona
                 const match = await bcrypt.compare(password, results[0].password);
                 if (match) {
                     res.redirect('/');
@@ -32,57 +31,58 @@ const authControllers = {
         } catch (error) {
             console.error(error);
             res.status(500).send('Error en el servidor. <a href="/auth/login">Volver al inicio de sesión</a>');
+        } finally {
+            if (connection) {
+                connection.release();
+            }
         }
     },
 
     getRegister: (req, res) => {
-
         res.render('register');
     },
 
     postRegister: async (req, res) => {
         const { name, lastname, email, password } = req.body;
         
+        let connection;
         try {
-            const db = await connect(); // Establecer la conexión
-            // Verificar si el usuario ya existe
+            connection = await getConnection();
             const userExistsQuery = `SELECT user_id FROM ${process.env.DB}.user WHERE email = ?`;
-            console.log("Email buscado:", email);
-            const [userExistsResult] = await db.query(userExistsQuery, [email]);
-            console.log("Resultado de la consulta:", userExistsResult);
-            //const userExistsResult = await db.query(userExistsQuery, [email]);
+            const [userExistsResult] = await connection.query(userExistsQuery, [email]);
+
             if (userExistsResult.length > 0) {
                 return res.status(400).send('El usuario ya existe');
             }
 
-            // Hashear la contraseña
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            // Preparar el nuevo usuario para la inserción
             const newUser = {
                 name,
                 lastname,
                 email,
                 password: hashedPassword,
-                create_time: new Date() // Asegúrate de que el formato de la fecha sea compatible con tu DB
+                create_time: new Date()
             };
 
-            // Insertar el nuevo usuario en la base de datos
             const insertQuery = `INSERT INTO ${process.env.DB}.user SET ?`;
-            await db.query(insertQuery, newUser);
+            await connection.query(insertQuery, newUser);
 
-            // Redirigir al usuario a la página de inicio de sesión u otra página relevante
             res.redirect('/');
-            //res.redirect('/login');
         } catch (error) {
             console.error(error);
             res.status(500).send('Error en el servidor');
+        } finally {
+            if (connection) {
+                connection.release();
+            }
         }
     },
     
-    logout:(req, res) => res.send('Esta ruta desloguea')
+    logout: (req, res) => {
+        // Implementa tu lógica de logout aquí
+        res.send('Esta ruta desloguea');
+    }
 };
 
-
-//Exporto el modulo Controllers
 module.exports = authControllers;
