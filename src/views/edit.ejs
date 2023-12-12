@@ -22,7 +22,7 @@
 
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a class="navbar__link" href="/pages/shop/shop.html">VER TIENDA</a>
+                    <a class="navbar__link" href="/shop">VER TIENDA</a>
                 </li>
                 <li class="navbar__item">
                     <a class="navbar__link" href="/admin">ADMIN</a>
@@ -119,13 +119,14 @@
                 <input class="upload-files" type="file" id="subir-archivos"/>
                 <article class="upload-images">
                     <% if(product.image_front || product.image_back) { %>
-                        <div class="images-container">
-                                <div class="upload-images__content">
-                                    <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
-                                    <h4 class="upload-images__text">Frente</h4>
-                                    <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
-                                    <h4 class="upload-images__text">Dorso</h4>
-                                </div>
+                        <div class="upload-images__content">
+                            <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
+                            <h4 class="upload-images__text">Frente</h4>                                    
+                        </div>
+                        <div class="upload-images__content">
+                            <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
+                            <h4 class="upload-images__text">Dorso</h4>
+                        </div>
                         </div>
                     <% } else { %>
                         <h4 class="upload-images__text">No hay imágenes para mostrar</h4>
@@ -140,7 +141,7 @@
         <nav class="navbar container"><!--barra de navegacion en el footer-->
             <ul class="navbar__item">
                 <li class="navbar__item">
-                    <a class="navbar__link" href="/pages/shop/shop.html">SHOP</a>
+                    <a class="navbar__link" href="/shop">SHOP</a>
                 </li>
                 <li class="navbar__item">
                     <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
