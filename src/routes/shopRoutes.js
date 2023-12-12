@@ -9,6 +9,8 @@ router.get('/item/:id', shopControllers.getItem);
 router.post('/item/:id/add', shopControllers.addItem );
 router.get('/cart', shopControllers.viewCart);
 router.post('/cart', shopControllers.checkout );
+router.post('/cart/remove/:productId', shopControllers.removeCartItem);
+router.post('/cart/update', shopControllers.updateCartItem);
 
 
 //Exporto el modulo Routers

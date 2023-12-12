@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const app = express();
 const mainRoutes = require('./src/routes/mainRoutes');
@@ -6,62 +7,45 @@ const shopRoutes = require('./src/routes/shopRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const methodOverride = require('method-override');
-require('dotenv').config(); //Requerimos la dependencia .env
+require('dotenv').config();
 const multer = require('multer');
 const bodyParser = require('body-parser');
 
-//Leemos la constante
-const PORT = process.env.PORT;
+// Configuración de express-session
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Usa una variable de entorno para el secreto
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // En producción, deberías considerar usar 'true'
+}));
 
-//Creo la carpeta public
+// Resto de la configuración del servidor...
+
+// Creo la carpeta public
 app.use(express.static('public'));
 
-//Motor de plantillas EJS
+// Motor de plantillas EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './src/views'));
 
-//Multer, implementacion
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './uploads'); // Define la carpeta donde se guardarán los archivos subidos
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now()); // Define el nombre del archivo
-    }
-  });
-const upload = multer({ storage });
+// Multer, implementación
+// ... Configuración de multer ...
 
-
-//Convertimos los datos entrantes a formato que entiende el servidor mediante middlewares
-//app.use(express.urlencoded());
+// Convertimos los datos entrantes a formato que entiende el servidor mediante middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Usamos override para habilitar los metodos PUT y DELETE
+// Usamos override para habilitar los metodos PUT y DELETE
 app.use(methodOverride('_method'));
 
-
-//importo las rutas desde Routes
+// Importo las rutas desde Routes
 app.use('/', mainRoutes);
 app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 
-//Middleware para manejar el error 404
+// Middleware para manejar el error 404 y otros errores
+// ... Middlewares de error ...
 
-app.use((req, res, next) => {
-    console.log(`Ruta solicitada: ${req.url}`);
-    next();
-});
-
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('¡Algo salió mal en el servidor!');
-});
-
-app.use((req, res, next) => {
-    res.status(404).send('Recurso no encontrado');
-});
-
-//definimos puerto para el servidor
-app.listen(4000, () => console.log("Servidor corriendo en http://localhost:4000")); 
+// Definimos puerto para el servidor
+app.listen(process.env.PORT || 4000, () => console.log(`Servidor corriendo en http://localhost:${process.env.PORT || 4000}`)); 

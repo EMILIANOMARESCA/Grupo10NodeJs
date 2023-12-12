@@ -61,20 +61,29 @@
                 <img src="../../img<%= product.image_front %>" alt="Figura coleccionable Funko de <%= product.product_name %>">
             </picture>
             <article class="collection__content">
-                <p class="card-item__licence item--licence"><%= product.licence_name %></p>
-                <h3 class="collection-item__name"><%= product.product_name %></h3>
-                <p class="collection__text item--text"><%= product.product_description %></p>
-                <p class="collection-item__price">$ <%= product.price %></p>
-                <div class="collection-item__quantity">
-                    <article class="item-quantity">
-                        <input type="number" class="item__input cart-input" id="productQuantity" placeholder="1" value="1">
-                        <span class="item-quantity__fields">
-                            <button class="btn btn-quantity btn-cart__size" id="increaseQuantity">+</button>
-                            <button class="btn btn-quantity btn-cart__size" id="decreaseQuantity">-</button>
-                        </span>
-                    </article>
-                    <a class="collection-item__link" href="/pages/shop/cart.html">Agregar al Carrito</a>
-                </div>
+                <form action="/shop/item/<%= product.product_id %>/add" method="POST">
+                    <p class="card-item__licence item--licence"><%= product.licence_name %></p>
+                    <h3 class="collection-item__name"><%= product.product_name %></h3>
+                    <p class="collection__text item--text"><%= product.product_description %></p>
+                    <p class="collection-item__price">$ <%= product.price %></p>
+                    <div class="collection-item__quantity">
+                        <article class="item-quantity">
+                            <input type="hidden" name="product_id" value="<%= product.product_id %>">
+                            <input type="hidden" name="product_name" value="<%= product.product_name %>">
+                            <input type="hidden" name="licence_name" value="<%= product.licence_name %>">
+                            <input type="hidden" name="price" value="<%= product.price %>">
+                            <input type="number" class="item__input cart-input" name="quantity" id="productQuantity" min="1" value="1">
+                            <input type="hidden" name="image" value="<%= product.image_front %>">
+                            <!-- Botones para incrementar y disminuir la cantidad -->
+                            <span class="item-quantity__fields">
+                                <button type="button" class="btn btn-quantity btn-cart__size" id="increaseQuantity">+</button>
+                                <button type="button" class="btn btn-quantity btn-cart__size" id="decreaseQuantity">-</button>
+                            </span>
+                        </article>
+                        <!-- Botón para agregar al carrito -->
+                        <button type="submit" class="collection-item__link">Agregar al Carrito</button>
+                    </div>
+                </form>
                 <p class="card-item__promo item-promo"><span>Ver métodos de pago</span> - <%= product.dues %> </p>
             </article>
         </section>
