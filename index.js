@@ -22,7 +22,8 @@ app.use(session({
 // Resto de la configuración del servidor...
 
 // Creo la carpeta public
-app.use(express.static('public'));
+//app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'))
 
 // Motor de plantillas EJS
 app.set('view engine', 'ejs');
