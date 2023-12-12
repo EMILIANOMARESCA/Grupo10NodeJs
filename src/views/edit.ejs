@@ -120,12 +120,14 @@
                 <article class="upload-images">
                     <% if(product.image_front || product.image_back) { %>
                         <div class="images-container">
-                                <div class="upload-images__content">
-                                    <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
-                                    <h4 class="upload-images__text">Frente</h4>
-                                    <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
-                                    <h4 class="upload-images__text">Dorso</h4>
-                                </div>
+                            <div class="upload-images__content">
+                                <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
+                                <h4 class="upload-images__text">Frente</h4>                                    
+                            </div>
+                            <div class="upload-images__content">
+                                <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
+                                <h4 class="upload-images__text">Dorso</h4>
+                            </div>
                         </div>
                     <% } else { %>
                         <h4 class="upload-images__text">No hay imágenes para mostrar</h4>

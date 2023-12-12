@@ -1,0 +1,23 @@
+#shop {
+    display: flex;
+    gap: var(--spacing-28);
+    font-family: var(--base-font);
+    margin: 0 auto;
+}
+
+.shop__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--spacing-36);
+}
+
+.shop__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-28);
+}
+
+.shop__item {
+    flex: 1 1 clamp(250px, 30%, 30%);
+}

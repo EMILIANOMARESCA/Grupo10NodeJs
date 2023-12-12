@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<main class="admin-main">
+    <section class="contact">
+    
+        <h1>Contacto</h1>
+        <p>¿Tienes preguntas o comentarios? Nos encantaría escucharlos.</p>
+        <form id="contact" action="/submit" method="POST">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+</main>
+<%- include('../partials/footer') %>

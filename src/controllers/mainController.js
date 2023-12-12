@@ -1,3 +1,4 @@
+const path = require('path');
 const { getConnection } = require('../config/conn'); // Asegúrate de que la ruta sea correcta
 require('dotenv').config();
 
@@ -26,7 +27,12 @@ const mainControllers = {
         }
     },
     
-    contact: (req, res) => res.send('Route for Contact View'),
+    contact: (req, res) => res.render(path.resolve(__dirname, '../views/components/contact.ejs'),
+    {
+        view:{
+            title: 'Contacto'
+        }
+    }),
     about: (req, res) => res.send('Route for About View'),
     faqs: (req, res) => res.send('Route for Faqs View')
 };
