@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+<main class="shop__container">
+    <aside><!-- formulario o botones (BUSCAR ,ORDENAR POR, PRECIO,FILTRAR) -->
+        <section class="formulario__container">
+            <div class="formulario__buscar">
+                <h4 class="buscar__titulo">BUSCAR</h4>
+                <input type="text" class="buscar__placeholder" placeholder="  item o categoria">
+            </div>
+            <div class="formulario__ordenar">
+                <h4 class="ordenar__titulo">ORDENAR POR</h4>
+                <div class="ordenar__placeholder">
+                    <input type="text" class="ordenar__placeholder-inner" placeholder="  Mayor a menor">
+                    <button class="custom-button">&#9660;</button>
+                </div>
+            </div>
+            <div class="formulario__precio">
+                <h4 class="precio__titulo">PRECIO</h4>
+                <div class="formulario__precio-inner">
+                    <p>MIN</p> <input type="text" placeholder="    0">
+                    <p> - </p>
+                    <p>MAX</p> <input type="text" placeholder="    0">
+                </div>
+            </div>
+            <div class="formulario__filtrar">
+                <h4 class="filtrar__titulo"> FILTRAR</h4>
+                <div class="filtrar">
+                    <label class="filtrar__label">
+                        <input type="checkbox">
+                        NUEVOS
+                    </label>
+                    <br><br>
+                    <label class="filtrar__label">
+                        <input type="checkbox">
+                        OFERTAS
+                    </label>
+                    <br><br>
+                    <label class="filtrar__label">
+                        <input type="checkbox">
+                        EDICION ESPECIAL
+                    </label>
+                    <br><br>
+                    <label class="filtrar__label">
+                        <input type="checkbox">
+                        FAVORITOS
+                    </label>
+                </div>
+            </div>
+            
+        </section>
+    </aside>
+    <section id="shop" class="shop__content">
+        <ul class="shop__items">
+            <% items.forEach( item => { %>
+              <li class="shop__item">
+                  <article class="card-item">
+                      <a class="card-item__link" href="/shop/item/<%= item.product_id%>">
+                         <picture class="card-item__cover">
+                              <span class="card-item__tag">Nuevo</span>
+                              <img class="card-item__img--front" src="../../img<%= item.image_front%>" alt="Figura coleccionable Funko de un Stormtrooper">
+                              <img class="card-item__img--back" src="../../img<%= item.image_back%>" alt="Figura coleccionable Funko de un Stormtrooper en caja">
+                          </picture>
+                         <div class="card-item__content">
+                              <p class="card-item__licence"><%= item.licence_name%></p>
+                              <h4 class="card-item__name"><%= item.product_name%></h4>
+                              <p class="card-item__price"><%= item.price%></p>
+                              <p class="card-item__promo"><%= item.dues%> CUOTAS SIN INTERÉS</p>
+                         </div>
+                      </a>
+                  </article>
+              </li>
+            <% }); %>
+        </ul>
+    </section>
+</main>
+
+<div class="pagination">
+    <iconify-icon icon="uiw:left-square-o" style="color: #c4cdd5;" width="44" height="44"></iconify-icon>
+    <a href="../../pages/shop/shop.html">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <iconify-icon icon="uiw:left-square-o" style="color: #c4cdd5;" width="44" height="44" flip="horizontal"></iconify-icon>        <!-- Agrega más enlaces de páginas según sea necesario -->
+</div>
+<%- include('../partials/footer') %>
