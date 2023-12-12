@@ -26,13 +26,7 @@ const mainControllers = {
         }
     },
     
-    contact: (req, res) => res.render(path.resolve(__dirname, '../views/components/contact.ejs'),
-    {
-        view:{
-            title: 'Contacto'
-        }
-    }),
-    
+    contact: (req, res) => res.render('contact'), 
     about: (req, res) => res.send('Route for About View'),
     faqs: (req, res) => res.send('Route for Faqs View')
 };

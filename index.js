@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 
 // Configuración de express-session
 app.use(session({
-  secret: process.env.SESSION_SECRET, // Usa una variable de entorno para el secreto
+  secret: process.env.SESSION_SECRET || 'default_secret', // Usa una variable de entorno para el secreto
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // En producción, deberías considerar usar 'true'
