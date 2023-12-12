@@ -2,6 +2,7 @@
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css');
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css');
 @import url('buttons.css');
+@import url('shop.css');
 
 :root {
     /* Paleta de colores */
@@ -862,6 +863,14 @@ iconify-icon {
     font-weight: 500;
     text-align: center;
 }
+.images-container{
+    display: flex;
+    gap: 2rem;
+}
+.upload-images-content{
+    display: flex;
+    flex-direction: column;
+}
 
 /* ------ PAGE CREATE ---------*/
 
@@ -933,14 +942,7 @@ iconify-icon {
                                                                              /*PAGINA SHOP.HTML*/
 
 .shop__container{
-    display: grid;
-    grid-template-columns:243px 1fr ;
-    grid-template-rows: 494px 1fr ;
-    grid-template-areas: 
-    "aside sliders__container" 
-    "    .  sliders__container"
-    "    .  sliders__container";
-    align-items: center;
+    display: flex;
     padding: var(--spacing-16) 0;
     margin: var(--spacing-68) auto;
     max-width: 1200px;
@@ -1400,4 +1402,26 @@ iconify-icon {
 
     font-size: 32px;
     font-weight: 700;
+}
+.error{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.error img{
+    width: 500px;
+}
+
+.error-text{
+    flex-direction: column;
+}
+.error-text h1 {
+    font-family: var(--alternative-font);
+    font-size: var(--font-display);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
 }

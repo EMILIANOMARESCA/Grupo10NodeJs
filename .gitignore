@@ -17,7 +17,7 @@ node_modules/
 Thumbs.db
 
 # Environment files
-.env
+local.env
 
 # Build directory
 /dist

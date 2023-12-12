@@ -34,7 +34,7 @@
         </nav>
     </header><!--Fin del Header-->
     
-    <main class="edit">
+    <main class="edit container">
         <form action="/admin/edit/<%= product.product_id %>" method="POST" >
             <article class="edit-item">
                 <h3 class="edit-item__text">Editar item</h3>
@@ -122,7 +122,9 @@
                         <div class="images-container">
                                 <div class="upload-images__content">
                                     <img class="upload-images__img" src="../../img<%= product.image_front %>" alt="Imagen Frontal del Producto">
-                                    <h4 class="upload-images__text">Frente</h4>
+                                    <h4 class="upload-images__text">Frente</h4>                                    
+                                </div>
+                                <div class="upload-images__content">
                                     <img class="upload-images__img" src="../../img<%= product.image_back %>" alt="Imagen Posterior del Producto">
                                     <h4 class="upload-images__text">Dorso</h4>
                                 </div>
