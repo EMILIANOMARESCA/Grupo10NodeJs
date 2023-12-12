@@ -4,7 +4,7 @@ const getAll = async () => {
 
     try
     {
-        const [rows] = await pool.query('SELECT product.*, category.category_name, licence.licence_name FROM (product LEFT JOIN category ON product.category_id = category.category_id) LEFT JOIN licence ON product.licence_id = licence.licence_id;');
+        const [rows] = await pool.query('SELECT productos.*, category.category_name, licence.licence_name FROM (product LEFT JOIN category ON product.category_id = category.category_id) LEFT JOIN licence ON product.licence_id = licence.licence_id;');
         
         return rows;
     }
