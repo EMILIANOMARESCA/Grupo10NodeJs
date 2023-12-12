@@ -48,7 +48,7 @@
             </ul>
           </li>
           <li class="navbar__item">
-            <a class="navbar__link" href="/pages/admin/contact.html"
+            <a class="navbar__link" href="/admin/contact"
               >CONTACTO</a
             >
           </li>
@@ -58,7 +58,7 @@
             >
           </li>
           <li class="navbar__item">
-            <a class="navbar__cart" href="/shop/cart">
+            <a class="navbar__cart" href=/shop/cart>
               <img src="../../img/icons/cart-icon.svg" alt="Icono de carrito" />
             </a>
           </li>
@@ -78,82 +78,59 @@
         <p class="cart-columns__text">Total</p>
       </section>
 
-        <% if (cart.length === 0) { %>
-          <p>Tu carrito está vacío.</p>
-        <% } else { %>
-          <% cart.forEach(item => { %>
-              <section class="cart-product">
-                  <!-- Detalles del producto -->
-                  <article class="cart-item">
-                      <img src="../../img/<%= item.image %>" class="cart-preview__img" alt="producto" />
-                      <div class="cart-item__text">
-                          <h3><%= item.product_name %></h3>
-                          <h4><%= item.licence_name %></h4>
-                          <br>
-                          <p>Precio: $<%= parseFloat(item.price).toFixed(2) %></p>
-                        </div>
-                  </article>
-                  <!-- Cantidad -->
-                  <article class="item-quantity">
-                    <input type="text" class="item__input cart-input" value="<%= item.quantity %>" data-product-id="<%= item.product_id %>">
-                    <span class="item-quantity__fields">
-                        <button type="button" class="btn btn-quantity btn-cart__size increaseQuantity">+</button>
-                        <button type="button" class="btn btn-quantity btn-cart__size decreaseQuantity">-</button>
-                    </span>                    
-                  </article>
-                  <!-- Precio total por producto -->
-                  <article class="total-price">
-                    <h3 id="total-<%= item.product_id %>">$<%= (item.quantity * item.price).toFixed(2) %></h3>
-                    <!-- Botón para eliminar producto del carrito -->
-                    <form action="/shop/cart/remove/<%= item.product_id %>" method="POST">
-                      <button type="submit" class="btn-quantity remove-item">X</button>
-                    </form>
-                  </article>
-              </section>
-          <% }) %>
+      <!-- Esto se repetiría por cada producto en el carrito -->
+      <div class="container-cart">
+     </div>
 
-          <!-- Resumen de la compra -->
-          <section class="summary">
-            <article>
+
+      <!-- Resumen compra -->
+      <section class="summary">
+          <article>
               <h2 class="cart-title__name">Resumen</h2>
-            </article>
-            <article class="cart-summary">
-              <span class="cart-summary__container"><p class="cart-summary__text">Cantidad: </p> <p id="qtdtotal" class="cart-summary__price"><%= qtdtotal %></p></span>
-              <span class="cart-summary__container"><p class="cart-summary__text">Subtotal: </p> <p id="subtotal" class="cart-summary__price">$<%= subtotal.toFixed(2) %></p></span>
-              <span class="cart-summary__container"><p class="cart-summary__text">Envío: </p> <p id="envio" class="cart-summary__price">$<%= envio.toFixed(2) %></p></span>
-              <span class="cart-summary__containerTotal"><p class="cart-summary__total">Total: </p> <p id="total-general" class="cart-summary__totalPrice">$<%= totalGeneral.toFixed(2) %></p></span>
-            </article>
-              <!-- Botón para ir al pago -->
-              <article>
-                <form action="/shop/cart" method="POST">
-                    <button type="submit" class="btn btn--primary btn-cart__large">IR A PAGAR</button>
-                </form>
-            </article>
-          </section>
-        <% } %>
+          </article>
+        <article class="cart-summary">
+          <span class="cart-summary__container"><p class="cart-summary__text">Cantidad: </p> <p class="cantidadItems"></p></span>
+          <span class="cart-summary__container"><p class="cart-summary__text">Subtotal: </p> <p class="cart-summary__price">x</p></span>
+          <span class="cart-summary__container"><p class="cart-summary__text">Envío: </p> <p class="cart-summary__price">x</p></span>
+          <span class="cart-summary__containerTotal"><p class="cart-summary__total">Total: </p> <p class="cart-summary__totalPrice">x</p></span>
+        </article>
+        <article>
+            <button class="btn btn--primary btn-cart__large">IR A PAGAR</button>
+        </article>
+    </section>
     </main>
     <!--CUERPO: Fin del Main-->
 
-    <footer class="footer"><!--PIE: Inicio del Footer-->
-      <nav class="navbar container"><!--barra de navegacion en el footer-->
-          <ul class="navbar__item">
-              <li class="navbar__item">
-                  <a class="navbar__link" href="/shop">SHOP</a>
-              </li>
-              <li class="navbar__item">
-                  <a class="navbar__link" href="/auth/login">INGRESAR</a>
-              </li>
-              <li class="navbar__item">
-                  <a class="navbar__link" href="/pages/admin/contact.html">CONTACTO</a>
-              </li>
-          </ul>
-          <picture>
-              <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop" >
-            </picture>
+    <footer class="footer">
+      <!--PIE: Inicio del Footer-->
+      <nav class="navbar container">
+        <!--barra de navegacion en el footer-->
+        <ul class="navbar__item">
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/login.html"
+              >INGRESAR</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/admin/contact.html"
+              >CONTACTO</a
+            >
+          </li>
+        </ul>
+        <picture class="footer__logo">
+          <img
+            src="../../img/branding/isotype.svg"
+            alt="Isotipo de la marca Funkoshop"
+          />
+        </picture>
       </nav>
-     
+
       <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer><!--PIE: Fin del Footer-->
+    </footer>
+    <!--PIE: Fin del Footer-->
 
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>

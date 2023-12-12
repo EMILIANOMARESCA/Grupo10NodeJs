@@ -80,127 +80,72 @@ const shopControllers = {
     },
 
     addItem: async (req, res) => {
-        const { product_id, product_name, licence_name, quantity, price, image } = req.body;
-        //console.log(req.body)
-        // Validaciones básicas
-        if (!product_id || isNaN(quantity) || isNaN(price)) {
-            return res.status(400).send('Datos de producto no válidos');
-        }
+        // const { product_id, product_name, licence_name, quantity, price, image } = req.body;
+        // //console.log(req.body)
+        // // Validaciones básicas
+        // if (!product_id || isNaN(quantity) || isNaN(price)) {
+        //     return res.status(400).send('Datos de producto no válidos');
+        // }
 
-        // Asegurar que la sesión del carrito existe
-        if (!req.session.cart) {
-            req.session.cart = [];
-        }
+        // // Asegurar que la sesión del carrito existe
+        // if (!req.session.cart) {
+        //     req.session.cart = [];
+        // }
 
-        // Agregar o actualizar el producto en el carrito
-        const existingProductIndex = req.session.cart.findIndex(item => item.product_id === product_id);
-        if (existingProductIndex > -1) {
-            // El producto ya está en el carrito, actualizar la cantidad
-            req.session.cart[existingProductIndex].quantity += quantity;
-        } else {
-            // El producto es nuevo en el carrito
-            req.session.cart.push({ product_id, product_name, licence_name, quantity, price, image });
-        }
+        // // Agregar o actualizar el producto en el carrito
+        // const existingProductIndex = req.session.cart.findIndex(item => item.product_id === product_id);
+        // if (existingProductIndex > -1) {
+        //     // El producto ya está en el carrito, actualizar la cantidad
+        //     req.session.cart[existingProductIndex].quantity += quantity;
+        // } else {
+        //     // El producto es nuevo en el carrito
+        //     req.session.cart.push({ product_id, product_name, licence_name, quantity, price, image });
+        // }
 
-        // Redirigir a la vista del carrito o devolver una respuesta
-        res.redirect('/shop/cart'); 
+        // // Redirigir a la vista del carrito o devolver una respuesta
+        // res.redirect('/shop/cart'); 
     },
     
-    viewCart: (req, res) => {
-        // Asegurarse de que hay un carrito en la sesión
-        if (!req.session.cart) {
-            req.session.cart = [];
+    viewCart: async (req, res) => {
+        try {
+            res.render('cart');
+        } catch (error) {
+            console.error('Error al obtener detalles del producto:', error);
+            return res.status(500).send('Error al obtener detalles del producto');
         }
-
-        // Calcular el total del carrito
-        let subtotal = 0;
-        let qtdtotal = 0;
-        let envio = 0;
-        let totalGeneral = 0;
-
-        req.session.cart.forEach(item => {
-            subtotal += parseInt(item.quantity, 10) * item.price;
-            qtdtotal += parseInt(item.quantity, 10);
-        });
-
-        totalGeneral = subtotal + envio
-
-        // Renderizar la vista del carrito con los datos del carrito y el total
-        res.render('cart', { cart: req.session.cart, qtdtotal: qtdtotal, subtotal: subtotal, envio: envio, totalGeneral: totalGeneral });
+        
     },
     
-    removeCartItem: (req, res) => {
-        const productId = req.params.productId;
-
-        if (!req.session.cart) {
-            req.session.cart = [];
-        }
-
-        // Filtra el carrito para eliminar el producto con el productId especificado
-        req.session.cart = req.session.cart.filter(item => item.product_id !== productId);
-
-        // Redirige de vuelta a la vista del carrito
-        res.redirect('/shop/cart');
+    product: async function (req,res) {
+        console.log(req.params.id)
+        const productId = req.params.id;
+        const sql = `SELECT * FROM product WHERE product_id = ?`;
+        connection = await getConnection();
+        const [productDetails] = await connection.query(sql, [productId]);
+        return res.json(productDetails);
     },
 
     checkout: async (req, res) => {
         // Asegurarse de que hay un carrito en la sesión
-        if (!req.session.cart || req.session.cart.length === 0) {
-            return res.status(400).send('No hay productos en el carrito');
-        }
+        // if (!req.session.cart || req.session.cart.length === 0) {
+        //     return res.status(400).send('No hay productos en el carrito');
+        // }
 
-        // Aquí iría la lógica para procesar la compra
-        // Por ejemplo, validar la disponibilidad de los productos, aplicar descuentos, calcular envío, etc.
+        // // Aquí iría la lógica para procesar la compra
+        // // Por ejemplo, validar la disponibilidad de los productos, aplicar descuentos, calcular envío, etc.
 
-        // Simularemos que el proceso fue exitoso
-        let orderSuccessful = true; 
+        // // Simularemos que el proceso fue exitoso
+        // let orderSuccessful = true; 
 
-        if (orderSuccessful) {
-            // Limpiar el carrito tras una compra exitosa
-            req.session.cart = [];
-            res.redirect('/');
-        } else {
-            // Manejar el caso de que la compra no sea exitosa
-            res.status(500).send('Hubo un problema al procesar su compra. Por favor, inténtelo de nuevo.');
-        }
-    },
-
-    updateCartItem: (req, res) => {
-        const { productId, quantity } = req.body;
-
-        if (!req.session.cart) {
-            req.session.cart = [];
-        }
-
-        let qtdtotal = 0;
-        let subtotal = 0;
-        let envio = 0;
-        let totalPerItem = 0;
-        let totalGeneral = 0;
-
-        // Encuentra el producto en el carrito y actualiza su cantidad
-        const productIndex = req.session.cart.findIndex(item => item.product_id === productId);
-        if (productIndex !== -1) {
-            req.session.cart[productIndex].quantity = quantity;
-            totalPerItem = req.session.cart[productIndex].price * quantity;
-        }
-
-        // Calcula el total general del carrito
-        req.session.cart.forEach(item => {
-                                subtotal += parseInt(item.quantity, 10) * item.price;
-                                qtdtotal += parseInt(item.quantity, 10);
-                            });
-
-        totalGeneral = subtotal + envio
-
-        res.json({
-            qtdtotal: qtdtotal,
-            subtotal: subtotal,  
-            totalPerItem: totalPerItem,
-            totalGeneral: totalGeneral
-        });
-    },
-
+        // if (orderSuccessful) {
+        //     // Limpiar el carrito tras una compra exitosa
+        //     req.session.cart = [];
+        //     res.redirect('/');
+        // } else {
+        //     // Manejar el caso de que la compra no sea exitosa
+        //     res.status(500).send('Hubo un problema al procesar su compra. Por favor, inténtelo de nuevo.');
+        // }
+    }
 };
 
 module.exports = shopControllers;
