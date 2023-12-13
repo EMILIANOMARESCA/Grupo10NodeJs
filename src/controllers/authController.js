@@ -21,6 +21,7 @@ const authControllers = {
             if (results.length > 0) {
                 const match = await bcrypt.compare(password, results[0].password);
                 if (match) {
+                    req.session.userId = results[0].email //email; // o 
                     res.redirect('/');
                 } else {
                     res.status(400).send('Credenciales inválidas. <a href="/auth/login">Volver al inicio de sesión</a>');
@@ -80,8 +81,18 @@ const authControllers = {
     },
     
     logout: (req, res) => {
-        // Implementa tu lógica de logout aquí
-        res.send('Esta ruta desloguea');
+        if (req.session) {
+            // Destruye la sesión
+            req.session.destroy(err => {
+                if (err) {
+                    // Manejar el error
+                    res.status(500).send('No se pudo cerrar la sesión correctamente.');
+                } else {
+                    // Redirigir a la página de inicio
+                    res.redirect('/');
+                }
+            });
+        }
     }
 };
 

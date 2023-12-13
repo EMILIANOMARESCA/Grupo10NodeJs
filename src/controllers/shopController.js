@@ -96,7 +96,7 @@ const shopControllers = {
         const existingProductIndex = req.session.cart.findIndex(item => item.product_id === product_id);
         if (existingProductIndex > -1) {
             // El producto ya está en el carrito, actualizar la cantidad
-            req.session.cart[existingProductIndex].quantity += quantity;
+            req.session.cart[existingProductIndex].quantity = parseInt(req.session.cart[existingProductIndex].quantity) + parseInt(quantity);
         } else {
             // El producto es nuevo en el carrito
             req.session.cart.push({ product_id, product_name, licence_name, quantity, price, image });

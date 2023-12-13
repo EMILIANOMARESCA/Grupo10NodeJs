@@ -3,6 +3,8 @@ const router = express.Router(); //preparo el modulo de rutas de express para cr
 const adminControllers = require('../controllers/adminController');
 const path = require('path');
 const multer = require('multer');
+const isAuthenticated = require('../middlewares/autenticar').isAuthenticated;
+
 
 // Configuración de Multer para la carga de imágenes
 const storage = multer.diskStorage({
@@ -16,13 +18,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/', adminControllers.admin);
-router.get('/create', adminControllers.getCreate);
-router.post('/create', upload.array('images', 2), adminControllers.postCreate);
-router.get('/edit/:id', adminControllers.getEdit);
-router.post('/edit/:id', adminControllers.postEdit);
-router.post('/delete/:id', adminControllers.deleteEdit);
-router.get('/search-products', adminControllers.searchProducts);
+router.get('/', isAuthenticated, adminControllers.admin);
+router.get('/create', isAuthenticated, adminControllers.getCreate);
+router.post('/create', isAuthenticated, upload.array('images', 2), adminControllers.postCreate);
+router.get('/edit/:id', isAuthenticated, adminControllers.getEdit);
+router.post('/edit/:id', isAuthenticated, adminControllers.postEdit);
+router.post('/delete/:id', isAuthenticated, adminControllers.deleteEdit);
+router.get('/search-products', isAuthenticated, adminControllers.searchProducts);
 
 
 // Ruta dinámica para servir páginas HTML estaticas
