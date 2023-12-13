@@ -201,6 +201,31 @@ const shopControllers = {
         });
     },
 
+    searchProducts: async (req, res) => {
+        let searchTerm = req.query.term;
+        console.log("Término de búsqueda recibido:", searchTerm);
+
+        let searchPattern = `%${searchTerm}%`;
+        console.log("Patrón de búsqueda:", searchPattern);
+        let sqlSearch = `SELECT product_id, sku, product_name, image_front, image_back, price, dues, licence_name FROM ${process.env.DB}.product INNER JOIN ${process.env.DB}.licence ON ${process.env.DB}.licence.licence_id = ${process.env.DB}.product.licence_id WHERE product_name LIKE ? OR sku LIKE ? OR licence_name LIKE ? ORDER BY product_id`;
+
+        let connection;
+        try {
+            connection = await getConnection();
+
+            const [results] = await connection.query(sqlSearch, [searchPattern, searchPattern, searchPattern]);
+            res.json(results);
+        } catch (error) {
+            console.error('Error al buscar productos:', error);
+            return res.status(500).send('Error al buscar productos');
+        } finally {
+            if (connection) {
+                connection.release();
+            }
+        }
+    },
+
+
 };
 
 module.exports = shopControllers;

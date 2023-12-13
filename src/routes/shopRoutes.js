@@ -11,6 +11,8 @@ router.get('/cart', shopControllers.viewCart);
 router.post('/cart', shopControllers.checkout );
 router.post('/cart/remove/:productId', shopControllers.removeCartItem);
 router.post('/cart/update', shopControllers.updateCartItem);
+router.get('/search-products', shopControllers.searchProducts);
+
 
 
 //Exporto el modulo Routers
