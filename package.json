@@ -2,11 +2,11 @@
   "name": "grupo10-tpfinal-sony",
   "version": "1.0.0",
   "description": "Este proyecto es una tienda en línea desarrollada para la venta de figuras Funko y merchandising relacionado. Forma parte de los proyectos de la Agencia Digital \"Los Patos Programadores\".",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
