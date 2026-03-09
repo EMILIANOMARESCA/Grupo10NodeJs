@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const methodOverride = require('method-override');
+const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +16,12 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 app.set('trust proxy', 1);
 
-// Configuración de express-session
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'default_secret',
@@ -30,40 +36,37 @@ app.use(
   })
 );
 
-// Archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Motor de plantillas EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './src/views'));
 
-// Middlewares de parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Habilitar PUT y DELETE
 app.use(methodOverride('_method'));
 
-// Rutas
 app.use('/', mainRoutes);
 app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 
-// 404
 app.use((req, res) => {
-  res.status(404).render('404');
+  res.status(404).render('404', {
+    view: {
+      title: '404'
+    }
+  });
 });
 
-// Error handler
-app.use((error, req, res, next) => {
+app.use((error, req, res, _next) => {
   console.error('Unhandled application error:', error);
   res.status(500).render('error', {
     error: 'Ocurrió un error inesperado. Intentá nuevamente más tarde.'
   });
 });
 
-if (!process.env.VERCEL) {
+if (require.main === module && !process.env.VERCEL) {
   app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
   });
