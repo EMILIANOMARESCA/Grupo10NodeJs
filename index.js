@@ -1,52 +1,72 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const methodOverride = require('method-override');
+require('dotenv').config();
+
 const app = express();
 const mainRoutes = require('./src/routes/mainRoutes');
 const shopRoutes = require('./src/routes/shopRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
 const authRoutes = require('./src/routes/authRoutes');
-const methodOverride = require('method-override');
-require('dotenv').config();
-const multer = require('multer');
-const bodyParser = require('body-parser');
+
+const port = process.env.PORT || 4000;
+const isProduction = process.env.NODE_ENV === 'production';
+
+app.set('trust proxy', 1);
 
 // Configuración de express-session
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'default_secret', // Usa una variable de entorno para el secreto
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // En producción, deberías considerar usar 'true'
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'default_secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: isProduction,
+      httpOnly: true,
+      sameSite: 'lax',
+      maxAge: 1000 * 60 * 60 * 2
+    }
+  })
+);
 
-// Resto de la configuración del servidor...
-
-// Creo la carpeta public
-//app.use(express.static('public'));
-app.use(express.static(__dirname + '/public'))
+// Archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Motor de plantillas EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './src/views'));
 
-// Multer, implementación
-// ... Configuración de multer ...
-
-// Convertimos los datos entrantes a formato que entiende el servidor mediante middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
+// Middlewares de parsing
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Usamos override para habilitar los metodos PUT y DELETE
+// Habilitar PUT y DELETE
 app.use(methodOverride('_method'));
 
-// Importo las rutas desde Routes
+// Rutas
 app.use('/', mainRoutes);
 app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 
-// Middleware para manejar el error 404 y otros errores
-// ... Middlewares de error ...
+// 404
+app.use((req, res) => {
+  res.status(404).render('404');
+});
 
-// Definimos puerto para el servidor
-app.listen(process.env.PORT || 4000, () => console.log(`Servidor corriendo en http://localhost:${process.env.PORT || 4000}`)); 
+// Error handler
+app.use((error, req, res, next) => {
+  console.error('Unhandled application error:', error);
+  res.status(500).render('error', {
+    error: 'Ocurrió un error inesperado. Intentá nuevamente más tarde.'
+  });
+});
+
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
